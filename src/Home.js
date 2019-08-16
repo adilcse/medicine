@@ -6,6 +6,7 @@ import Popup from "reactjs-popup";
 import Login from './Components/login/Login';
 import Body from './Body';
 import Register from './Components/register/Register';
+import Nav from './Components/navigation/nav';
 import * as firebase from "firebase/app";
 import "firebase/auth";
  // Your web app's Firebase configuration
@@ -139,76 +140,28 @@ signout(){
 
 
 render(){
-	const signinstatus=this.state.signedin;
-	let button;
-	if(!signinstatus){
-		button= <li className="nav-item btn-group" >
-	       <Popup 
-	       	  open={this.state.signinopen}
-	        trigger={  <a className="nav-link" href="#" align="right" >	sign in <Icon name='sign-in' size='large' /> </a>}
-	        position=" center center"
-	        modal
-	        closeOnDocumentClick
-	         onClose={()=>this.signinbox(false)}
-	         onOpen= {()=>this.signinbox(true)}
-	        > 
-	         <div><Login cancel={()=>this.signinbox(false)} login={this.trylogin} firebase={firebase}/></div>
-	  </Popup>
-	   <Popup
-	       	  open={this.state.registeropen}
-	        trigger={ <a className="nav-link" href="#" align="right" >	sign up <Icon name='signup' size='large' /> </a>}
-	        position=" center center"
-	        modal
-	        closeOnDocumentClick
-	         onClose={()=>this.registerbox(false)}
-	         onOpen= {()=>this.registerbox(true)}
-	        > 
-	         <div><Register cancel={()=>this.registerbox(false)} firebase={firebase} register={this.trylogin}/></div>
-	  </Popup>
-	          </li>;
-	    }else{
-	    	button = <li className="nav-item btn-group active " align="right"   >
-         <a className="nav-link"   href="#" onClick={this.signout}>Signout <Icon name='sign-out' size='large' /> </a>
-         <a className="nav-link" href="#"> Welcome {this.state.user.displayName} <Icon name='user' size='large' /> </a>
-      
-      </li>;
-	    }
-		return(
-		<div align="center">
-		<nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" align="left">
-  <a className="navbar-brand" href="#"> <Icon name='leaf' size='large' /> MedLife </a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
+	
+return(
+  <div>
+  <Nav signinstatus={this.state.signedin}
+  signinopen={this.state.signinopen}
+  signinbox={this.signinbox}
+  registerbox={this.registerbox}
+  trylogin={this.trylogin}
+  firebase={firebase}
+  registeropen={this.state.registeropen}
+  home={this.state.home}
+  myorder={this.state.myorder}
+  user={this.state.user}
+  activestate={this.activestate}
+  signout={this.signout}
+  h/>
 
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item" className={this.state.home} onClick={()=>this.activestate("home")}>
-        <a className="nav-link" href="#">Home  <Icon name='home' size='large' /> </a>
-      </li>
-      <li className="nav-item" className={this.state.myorder} onClick={()=>this.activestate("myorder")}>
-        <a className="nav-link"   href="#">My Orders  <Icon name='cart' size='large' /> </a>
-      </li>
-     
-      <li align="center"> 
-       <Searchcomponent className=" wd"   />
-      </li>
-     
-     {button}
-      
- 		</ul>
-       
-    
-   
-   
-    
-  </div>
-   </nav>
     <Body tab={this.state.tab}/>
   </div>
 
 				
-		);
+	);
 }
 } 
 
