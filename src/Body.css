@@ -3,8 +3,28 @@
 	grid-gap: 30px;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
+	overflow: hidden;
 }
-.imgsz{
-	height: 20px;
-	width: 20px;
+
+@media screen and (max-width: 1200px)
+{
+.home{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	overflow: hidden;
+
+}
+
+
+}
+@media screen and (max-width: 800px)
+{
+.home{
+	display:grid;
+	grid-template-columns: 1fr;
+	overflow: hidden;
+
+}
+
+
 }
