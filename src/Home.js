@@ -100,6 +100,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
   
 
+
 //try login
 trylogin(status=false){
 	let x=this;
@@ -113,6 +114,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     x.setState({user:user});
   } else {
      x.setState({user:false});
+
 
   }
 });
