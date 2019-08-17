@@ -157,7 +157,7 @@ return(
   user={this.state.user}
   activestate={this.activestate}
   signout={this.signout}
-  h/>
+  />
 
     <Body tab={this.state.tab}/>
   </div>
