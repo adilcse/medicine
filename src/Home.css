@@ -1,7 +1,11 @@
 .wd{
-	width: 300px; 
+	width: 250px; 
 
 } 
 .iconbg{
 	background-color: "white";
+}
+
+.home{
+	margin-top: 0px;
 }

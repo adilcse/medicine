@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 function Card({image,title,desc,price,dis}){
 return(
-<div className="card mb-3 cl1" >
+<div className="card mb-3 cl1 bd" >
   <div className="row no-gutters">
     <div className="col-md-4">
       <img src={image} className="card-img" alt={title}/>
