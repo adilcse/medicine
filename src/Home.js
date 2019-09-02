@@ -7,20 +7,10 @@ import Login from './Components/login/Login';
 import Body from './Body';
 import Register from './Components/register/Register';
 import Nav from './Components/navigation/nav';
-import * as firebase from "firebase/app";
-import "firebase/auth";
- // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAuCg2E3sWkzwwmAT-3W7iu5RNN-C0r87U",
-    authDomain: "med-life.firebaseapp.com",
-    databaseURL: "https://med-life.firebaseio.com",
-    projectId: "med-life",
-    storageBucket: "",
-    messagingSenderId: "799069840222",
-    appId: "1:799069840222:web:0957d160b3d30bb8"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+import {db,firebase} from './firebaseconnect';
+
+
+ 
 
 class Home extends Component{
 	
@@ -30,9 +20,12 @@ class Home extends Component{
      signinopen: false,
      registeropen:false,
      home:"active",
+     addItems : "inactive",
      myorder : "inactive",
      signedin : false,
-     tab:"home"
+     tab:"home",
+     isAdmin :false,
+     useremail :""
     
      };
     this.signinbox = this.signinbox.bind(this);
@@ -42,11 +35,34 @@ class Home extends Component{
 	 this.activestate = this.activestate.bind(this);
 	 this.trylogin = this.trylogin.bind(this);
 	  this.signout = this.signout.bind(this);
+      this.addItems = this.addItems.bind(this);
 	  let obj=this;
 firebase.auth().onAuthStateChanged(function(user) {
 
   if (user) {
-  	
+    const uid=user.uid;
+  	let userRef = db.collection('LastUser').doc(uid);
+let getDoc = userRef.get()
+  .then(doc => {
+    if (!doc.exists) {
+      console.log('user not admin');
+       obj.setState({
+    isAdmin:false
+   });
+    } else {
+      console.log('Document data:', doc.data());
+      let userdetails = doc.data();
+      if(userdetails.type === "admin"){
+        obj.setState({
+    isAdmin:true,
+    useremail : userdetails.email
+   });
+      }
+    }
+  })
+  .catch(err => {
+    console.log('Error getting document', err);
+  });
    obj.setState({
    	user:user,
    	signedin:true
@@ -75,13 +91,23 @@ firebase.auth().onAuthStateChanged(function(user) {
         this.setState({ 
          home: "active",
          myorder :"inactive",
+         addItems : "inactive"
         
          });
           break;
       case "myorder" :
         this.setState({ 
          home: "inactive",
-         myorder :"active"
+         myorder :"active",
+          addItems : "inactive"
+
+         });
+          break;
+            case "addItems" :
+        this.setState({ 
+         home: "inactive",
+         myorder :"inactive",
+         addItems : "active"
 
          });
           break;
@@ -89,9 +115,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         this.setState({ 
          home: "active",
          myorder :"inactive",
-        
+         addItems : "inactive"
          });  
        }
+
       this.setState({ 
          tab:tab
 
@@ -138,7 +165,10 @@ signout(){
 		});
 }
 
+addItems(){
+  this.activestate("addItems");
 
+}
 render(){
 	
 return(
@@ -155,6 +185,9 @@ return(
   user={this.state.user}
   activestate={this.activestate}
   signout={this.signout}
+  isAdmin={this.state.isAdmin}
+  addItemstab={this.state.addItems}
+  addItems={this.addItems}
   />
 
     <Body tab={this.state.tab}/>

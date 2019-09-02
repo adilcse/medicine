@@ -5,7 +5,10 @@
 	grid-template-rows: 1fr 1fr 1fr;
 	overflow: hidden;
 }
-
+.addItemcss{
+	margin-top: 50px;
+	
+}
 @media screen and (max-width: 1200px)
 {
 .home{
