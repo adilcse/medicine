@@ -39,11 +39,19 @@ class Nav extends Component{
 	         <div><Register cancel={()=>this.props.registerbox(false)} firebase={this.props.firebase} register={this.props.trylogin}/></div>
 	  </Popup>
 	          </li>;
+	    }
+	    else if(this.props.isAdmin){
+	    		button = <li className="nav-item btn-group active " align="right"   >
+         <a className="nav-link"   href="#" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </a>
+         <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
+          <a className="nav-link " href="#" onClick={this.props.addItems}> Add Items  <Icon name='add' size='large' /> </a>
+
+      </li>;
 	    }else{
 	    	button = <li className="nav-item btn-group active " align="right"   >
          <a className="nav-link"   href="#" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </a>
          <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
-      
+
       </li>;
 	    }
 		return(
@@ -57,10 +65,11 @@ class Nav extends Component{
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item" className={this.props.home} onClick={()=>this.props.activestate("home")}>
-        <a className="nav-link" href="#">Home  <Icon name='home' size='large' /> </a>
+        <a className="nav-link" href="#">Home <Icon name='play' size='large' /> </a>
       </li>
+      
       <li className="nav-item" className={this.props.myorder} onClick={()=>this.props.activestate("myorder")}>
-        <a className="nav-link"   href="#">My Orders  <Icon name='cart' size='large' /> </a>
+        <a className="nav-link" href="#">My Orders <Icon name='cart' size='large' /> </a>
       </li>
      
       <li align="center"> 

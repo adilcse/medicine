@@ -4,6 +4,7 @@ import './index.css';
 import Searchcomponent from './Components/search/Search';
 import * as serviceWorker from './serviceWorker';
 import Home from './Home';
+import AddItems from './Components/addItem/addItems';
 const styleLink = document.createElement("link");
 
 styleLink.rel = "stylesheet";

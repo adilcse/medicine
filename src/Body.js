@@ -3,7 +3,7 @@ import faker from 'faker';
 import _ from 'lodash';
 import Card from './Components/card/Card';
 import './Body.css';
-
+import AddItems from './Components/addItem/addItems';
 const source = _.times(20, () => ({
   title: faker.commerce.productName(),
   desc: faker.lorem.paragraph(),
@@ -32,12 +32,29 @@ if(tab === "home"){
         		/>
         	})}
        </div>);
-}else{
+}else if(tab === "addItems"){
 	return(
-	<h2>  orders </h2>
+   <div className="addItemcss">
+  <div className="row">
+    <div className="col-md">
+     
+    </div>
+    <div >
+     <AddItems/>
+    </div>
+    <div className="col-md">
+    
+    </div>
+  </div>
+</div>
+	
 	);
 }
-
+else{
+  return(
+  <h2>  Orders </h2>
+  );
+}
 }
 }
 export default Body;
