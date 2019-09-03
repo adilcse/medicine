@@ -72,7 +72,7 @@ docRef.get().then(function(doc) {
       errorbox.hidden = true;
       successbox.hidden = false;
       obj.setState({
-          formvalid : false
+          formvalid : true
       })
         console.log("No such document!");
 
@@ -113,19 +113,14 @@ docRef.get().then(function(doc) {
       return
     }else if(!imageadded){
       window.alert("please add an Image ");
-      
+
       this.setState({
         formvalid :false
       })
       return
 
     }
-    else{
-      this.setState({
-        formvalid :true
-      })
-    }
-  	if(this.state.formvalid){
+    else if(this.state.formvalid){
   	 progressbar.hidden =false;
   	const {image} = this.state;
   	const uploadTask = storage.ref(`items/images/${itemid}`).put(image);
@@ -173,6 +168,10 @@ docRef.get().then(function(doc) {
             this.setState({url});
         })
     });
+    return;
+  }
+  else{
+    window.alert("id invalid")
   }
   }
 handleDragover(event){

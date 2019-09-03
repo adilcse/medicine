@@ -23,7 +23,7 @@ class Home extends Component{
      addItems : "inactive",
      myorder : "inactive",
      signedin : false,
-     tab:"addItems",
+     tab:"home",
      isAdmin :false,
      useremail :""
     
