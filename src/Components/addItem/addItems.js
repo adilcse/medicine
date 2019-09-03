@@ -12,19 +12,24 @@ class addItems extends Component {
     super(props);
    this.state = {
     image:"",
-    imageadded : false
+    imageadded : false,
+    formvalid : false
     
      };
    
-   this.handleChange = this.handleChange.bind(this);
+
    this.handleDragover = this.handleDragover.bind(this);
    this.handleDrop = this.handleDrop.bind(this);
    this.handleSubmit = this.handleSubmit.bind(this);
      this.uploadImage = this.uploadImage.bind(this);
-
+     this.idEntered = this.idEntered.bind(this);
+    
 
 }
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+componentDidMount(){
+  document.getElementById("form-itemid").addEventListener("focusout", this.idEntered);
+}
+
 
  
  handleDrop(files, event) {
@@ -46,6 +51,38 @@ this.setState({
     	window.alert("invalid file type")
     }
   }
+  idEntered=()=>{
+    const obj = this;
+   const idbox =  document.getElementById("form-itemid");
+   const errorbox = document.getElementById("takenid");
+   const successbox = document.getElementById("uniqueid");
+const id = idbox.value;
+if(id.length<1){
+  return
+}
+
+   var docRef = db.collection("Items").doc(idbox.value);
+
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+      errorbox.hidden = false;
+      successbox.hidden = true;
+      console.log(doc.data());
+    } else {
+      errorbox.hidden = true;
+      successbox.hidden = false;
+      obj.setState({
+          formvalid : false
+      })
+        console.log("No such document!");
+
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+  
+   
+  }
   uploadImage = ()=>{
   	 var progressbar = document.querySelector('progress'); 
      const itemid =	document.getElementById("form-itemid").value ;
@@ -54,13 +91,41 @@ this.setState({
 	const itemdesc=document.getElementById("form-description").value ;
   	
   	
-  		let imageadded = (this.state.imageadded) ;
-  		console.log(imageadded);
-  	if(itemid.length < 1 || itemprice.length < 1 || itemname < 3|| !imageadded){
-  			window.alert("Enter valid data");
-  		return;
+      let imageadded = (this.state.imageadded) ;
+      
+  	if(itemid.length < 1){
+      window.alert("Enter valid ID");
+      this.setState({
+        formvalid :false
+      })
+      return;
+    }else if( itemprice.length < 1){
+      window.alert("Enter valid PRICE");
+      this.setState({
+        formvalid :false
+      })
+      return
+    }else if(itemname < 3){
+      window.alert("Enter valid NAME");
+      this.setState({
+        formvalid :false
+      })
+      return
+    }else if(!imageadded){
+      window.alert("please add an Image ");
+      
+      this.setState({
+        formvalid :false
+      })
+      return
 
-  	}
+    }
+    else{
+      this.setState({
+        formvalid :true
+      })
+    }
+  	if(this.state.formvalid){
   	 progressbar.hidden =false;
   	const {image} = this.state;
   	const uploadTask = storage.ref(`items/images/${itemid}`).put(image);
@@ -92,7 +157,9 @@ this.setState({
     					document.getElementById("form-itemid").value = ""
 						document.getElementById("form-itemname").value = ""
 						document.getElementById("form-itemprice").value = ""
-						document.getElementById("form-description").value = ""
+            document.getElementById("form-description").value = ""
+           document.getElementById("takenid").hidden = true
+    document.getElementById("uniqueid").hidden = true
 						   var img = document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 						this.setState = initialstate;
 
@@ -106,7 +173,7 @@ this.setState({
             this.setState({url});
         })
     });
-
+  }
   }
 handleDragover(event){
 	
@@ -144,39 +211,35 @@ clear(){
         </FileDrop>
    
   </div>
-  <div className="col-5">
-      <Form >
-   <Form.Field
-        id='form-itemid'
-        control={Input}
-         required
-        label='ItemID'
-        placeholder='Item ID'
-      />
-      
-      <Form.Field
-      
-        id='form-itemname'
-        control={Input}
-           required
-        label='Item Name'
-        placeholder='Item name'
-       
-      />
-      <Form.Field
-        id='form-itemprice'
-        control={Input}
-            required
-        label='Item Price'
-        placeholder='Item Price'
-      />
-      
+  <div className="col-5" align = "left" >
+      <Form>
+        <div  className = "itemspacing">
+      <lable for ="form-itemid" ><strong>Item Id</strong></lable>
+       <input   id="form-itemid" type="text" placeholder = "Enter Id" required />
+       </div>
+       <div className="alert alert-danger" role="alert" id ="takenid" hidden>
+ Item already added!!
+</div>
+<div class="alert alert-success" role="alert" id = "uniqueid" hidden>
+  item can be added...
+</div>
+<div  className = "itemspacing">
+
+       <lable for ="form-itemname" ><strong>Item Name</strong></lable>
+       <input  id="form-itemname" type="text" placeholder = "Item Name" required/>
+       </div>
+       <div  className = "itemspacing">
+       <lable  for ="form-itemprice" ><strong>Item Price</strong></lable>
+       <input  id="form-itemprice" type="text" placeholder = "Item Price" required/>
+       </div>
+    
+    
    
     <Form.Field 
-
+  className = "itemspacing" 
       id='form-description'
       control={TextArea}
-      label='Description'
+     
       placeholder='Description'
     />
     <Form.Group>
