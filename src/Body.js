@@ -1,34 +1,56 @@
 import React,{Component} from 'react';
-import faker from 'faker';
 import _ from 'lodash';
 import Card from './Components/card/Card';
 import './Body.css';
 import AddItems from './Components/addItem/addItems';
-const source = _.times(20, () => ({
-  title: faker.commerce.productName(),
-  desc: faker.lorem.paragraph(),
-  image: faker.image.sports(),
-  price: faker.commerce.price(),
-  dis : "20"
-}))
-let paragraph=faker.lorem.paragraph();
+import {firebase,db} from './firebaseconnect';
 
-
+let source= new Array ();
 class Body extends Component{
+constructor(props){
+super(props)
+this.state ={
+  itemfetched : false
+}
+this.fetchitems = this.fetchitems.bind(this);
+}
+fetchitems=()=>{
+  db.collection("Items").orderBy("name").limit(10).get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        source.push(doc.data());
+    });
+}).then(()=>{
+  console.log("logged")
+  this.setState({
+    itemfetched :true
+  })
+});
 
-        
+
+}
+     componentDidMount(){
+      const tab = this.props.tab;
+      if(tab === "home"){
+        this.fetchitems();
+      }
+     } 
 render(){
 	 const tab = this.props.tab;
 let mainbody =<div/> ;
 if(tab === "home"){
+  if(!this.state.itemfetched){
+    return <div><h2>Loading</h2></div>
+  }
 	return(<div className=" home container">
         	{source.map((data,i)=>{
         	 return	<Card key={i} 
-        			  image={data.image}
-        			  desc={data.desc}
-        			  title={data.title}
+        			  image={data.imageurl}
+        			  desc={data.description}
+        			  title={data.name}
         			  price={data.price}
-        			  dis={data.dis}
+        			  dis={10}
         		/>
         	})}
        </div>);

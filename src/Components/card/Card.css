@@ -1,9 +1,10 @@
 .cl1{
 
 
-max-width: 800px;
+max-width: 3in;
 margin: 30px;
-
+max-height: 3in;
+overflow: hidden;
 }
 .cl1 :hover{
 	text-decoration-color: red;

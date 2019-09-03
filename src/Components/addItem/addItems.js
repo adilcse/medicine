@@ -89,7 +89,7 @@ docRef.get().then(function(doc) {
 	const itemname =document.getElementById("form-itemname").value ;
 	const itemprice = document.getElementById("form-itemprice").value ;
 	const itemdesc=document.getElementById("form-description").value ;
-  	
+  const itemtype=document.getElementById("form-itemtype").value ;
   	
       let imageadded = (this.state.imageadded) ;
       
@@ -105,7 +105,13 @@ docRef.get().then(function(doc) {
         formvalid :false
       })
       return
-    }else if(itemname < 3){
+    }else if( itemtype.length < 2){
+      window.alert("Enter valid itemtype");
+      this.setState({
+        formvalid :false
+      })
+      return
+    }else if(itemname.length < 3){
       window.alert("Enter valid NAME");
       this.setState({
         formvalid :false
@@ -138,13 +144,14 @@ docRef.get().then(function(doc) {
         // complete function ....
          progressbar.hidden =true;
         storage.ref('items/images').child(itemid).getDownloadURL().then(url => {
-            console.log(url);
+          
             	db.collection("Items").doc(itemid).set({
    				 name: itemname,
    				 item_id: itemid,
   				  price: itemprice,
   				  description : itemdesc,
-  				  imageurl : url
+            imageurl : url,
+            type :itemtype
 					})
 					.then(function() {
     					console.log("Document successfully written!");
@@ -153,6 +160,7 @@ docRef.get().then(function(doc) {
 						document.getElementById("form-itemname").value = ""
 						document.getElementById("form-itemprice").value = ""
             document.getElementById("form-description").value = ""
+            document.getElementById("form-itemtype").value = ""
            document.getElementById("takenid").hidden = true
     document.getElementById("uniqueid").hidden = true
 						   var img = document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
@@ -186,7 +194,8 @@ clear(){
 	document.getElementById("form-itemid").value = ""
 	document.getElementById("form-itemname").value = ""
 	document.getElementById("form-itemprice").value = ""
-	document.getElementById("form-description").value = ""
+  document.getElementById("form-description").value = ""
+  document.getElementById("form-itemtype").value = ""
 	 document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 }
   render() {
@@ -226,6 +235,11 @@ clear(){
 
        <lable for ="form-itemname" ><strong>Item Name</strong></lable>
        <input  id="form-itemname" type="text" placeholder = "Item Name" required/>
+       </div>
+       <div  className = "itemspacing">
+
+       <lable for ="form-itemtype" ><strong>Item Type</strong></lable>
+       <input  id="form-itemtype" type="text" placeholder = "Item Type" required/>
        </div>
        <div  className = "itemspacing">
        <lable  for ="form-itemprice" ><strong>Item Price</strong></lable>
