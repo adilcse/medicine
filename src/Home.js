@@ -25,6 +25,7 @@ class Home extends Component{
      signedin : false,
      tab:"home",
      isAdmin :false,
+    
      useremail :""
     
      };
@@ -36,6 +37,7 @@ class Home extends Component{
 	 this.trylogin = this.trylogin.bind(this);
 	  this.signout = this.signout.bind(this);
       this.addItems = this.addItems.bind(this);
+    this.itemClicked = this.itemClicked.bind(this);
 	  let obj=this;
 firebase.auth().onAuthStateChanged(function(user) {
 
@@ -75,6 +77,15 @@ let getDoc = userRef.get()
 });
 	 
   }
+
+  itemClicked=(item)=>{
+    console.log(item);
+    this.setState({
+      itemView:true,
+      itemSelected :item,
+      tab : "itemView"
+    })
+    }
   signinbox(status) {
     this.setState({ signinopen: status });
    
@@ -169,6 +180,7 @@ addItems(){
   this.activestate("addItems");
 
 }
+
 render(){
 	
 return(
@@ -190,7 +202,12 @@ return(
   addItems={this.addItems}
   />
 
-    <Body tab={this.state.tab}/>
+    <Body 
+    tab={this.state.tab}
+    itemClicked={this.itemClicked}
+    itemSelected={this.state.itemSelected}
+    
+    />
   </div>
 
 				

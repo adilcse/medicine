@@ -4,13 +4,16 @@ import Card from './Components/card/Card';
 import './Body.css';
 import AddItems from './Components/addItem/addItems';
 import {firebase,db} from './firebaseconnect';
-
+import itemView from './Components/itemView/ItemView';
+import ItemView from './Components/itemView/ItemView';
 let source= new Array ();
 class Body extends Component{
 constructor(props){
 super(props)
 this.state ={
-  itemfetched : false
+  itemfetched : false,
+
+ 
 }
 this.fetchitems = this.fetchitems.bind(this);
 }
@@ -22,7 +25,7 @@ fetchitems=()=>{
         source.push(doc.data());
     });
 }).then(()=>{
-  console.log("logged")
+ 
   this.setState({
     itemfetched :true
   })
@@ -30,17 +33,19 @@ fetchitems=()=>{
 
 
 }
+
      componentDidMount(){
-      const tab = this.props.tab;
+      const tab = this.state.tab;
       if(tab === "home"){
         this.fetchitems();
       }
      } 
 render(){
-	 const tab = this.props.tab;
-let mainbody =<div/> ;
+   let tab = this.props.tab;
+   console.log(tab);
 if(tab === "home"){
   if(!this.state.itemfetched){
+    this.fetchitems();
     return <div><h2>Loading</h2></div>
   }
 	return(<div className=" home container">
@@ -50,7 +55,10 @@ if(tab === "home"){
         			  desc={data.description}
         			  title={data.name}
         			  price={data.price}
-        			  dis={10}
+                dis={10}
+                itemid = {data.item_id}
+                itemClicked={this.props.itemClicked}
+                source={data}
         		/>
         	})}
        </div>);
@@ -62,7 +70,8 @@ if(tab === "home"){
      
     </div>
     <div >
-     <AddItems/>
+     <AddItems
+     />
     </div>
     <div className="col-md">
     
@@ -71,6 +80,14 @@ if(tab === "home"){
 </div>
 	
 	);
+}
+else if(tab === "itemView"){
+ 
+  return(
+<ItemView
+ itemSelected={this.props.itemSelected}
+/>
+  );
 }
 else{
   return(
