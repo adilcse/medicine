@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Button, Form, Segment,Image,Input,TextArea } from 'semantic-ui-react'
+import { Button, Form,Image,TextArea } from 'semantic-ui-react'
 import './addItems.css'
 import FileDrop from 'react-file-drop'
 import {firebase,db} from '../../firebaseconnect';
@@ -20,7 +20,7 @@ class addItems extends Component {
 
    this.handleDragover = this.handleDragover.bind(this);
    this.handleDrop = this.handleDrop.bind(this);
-   this.handleSubmit = this.handleSubmit.bind(this);
+  
      this.uploadImage = this.uploadImage.bind(this);
      this.idEntered = this.idEntered.bind(this);
     
@@ -163,7 +163,7 @@ docRef.get().then(function(doc) {
             document.getElementById("form-itemtype").value = ""
            document.getElementById("takenid").hidden = true
     document.getElementById("uniqueid").hidden = true
-						   var img = document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
+						  document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 						this.setState = initialstate;
 
 					})
@@ -185,11 +185,7 @@ docRef.get().then(function(doc) {
 handleDragover(event){
 	
 }
-  handleSubmit ()  {
-    const { name, email } = this.state
-
-   
-  }
+  
 clear(){
 	document.getElementById("form-itemid").value = ""
 	document.getElementById("form-itemname").value = ""
@@ -199,7 +195,7 @@ clear(){
 	 document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 }
   render() {
-    const { name, email, submittedName, submittedEmail } = this.state
+   
      
     return (
     	<div className="fluid home ">
