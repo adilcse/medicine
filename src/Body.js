@@ -3,29 +3,33 @@ import _ from 'lodash';
 import Card from './Components/card/Card';
 import './Body.css';
 import AddItems from './Components/addItem/addItems';
-import {firebase,db} from './firebaseconnect';
-import itemView from './Components/itemView/ItemView';
+import {db} from './firebaseconnect';
 import ItemView from './Components/itemView/ItemView';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import { thisExpression } from '@babel/types';
 let source= new Array ();
 class Body extends Component{
 constructor(props){
 super(props)
-this.state ={
-  itemfetched : false,
 
- 
-}
 this.fetchitems = this.fetchitems.bind(this);
+this.Home = this.Home.bind(this);
+this.AddItems = this.AddItems.bind(this);
+this.Product = this.Product.bind(this);
+this.MyOrders = this.MyOrders.bind(this);
 }
 fetchitems=()=>{
+
+ 
   db.collection("Items").orderBy("name").limit(10).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+       
         source.push(doc.data());
+        console.log(source.length);
     });
 }).then(()=>{
- 
+ console.log(source);
   this.setState({
     itemfetched :true
   })
@@ -34,43 +38,31 @@ fetchitems=()=>{
 
 }
 
-     componentDidMount(){
-      const tab = this.state.tab;
-      if(tab === "home"){
-        this.fetchitems();
-      }
-     } 
-render(){
-   let tab = this.props.tab;
-   console.log(tab);
-if(tab === "home"){
-  if(!this.state.itemfetched){
+Home=()=>{
+  console.log("home called");
+    if(source.length<9){
     this.fetchitems();
+    console.log("item not fetched");
     return <div><h2>Loading</h2></div>
   }
 	return(<div className=" home container">
         	{source.map((data,i)=>{
         	 return	<Card key={i} 
-        			  image={data.imageurl}
-        			  desc={data.description}
-        			  title={data.name}
-        			  price={data.price}
-                dis={10}
-                itemid = {data.item_id}
-                itemClicked={this.props.itemClicked}
                 source={data}
         		/>
         	})}
        </div>);
-}else if(tab === "addItems"){
-	return(
-   <div className="addItemcss">
+}
+AddItems=()=>{
+  return(
+     <div className="addItemcss">
   <div className="row">
     <div className="col-md">
      
     </div>
     <div >
      <AddItems
+     isAdmin={this.props.isAdmin}
      />
     </div>
     <div className="col-md">
@@ -78,22 +70,37 @@ if(tab === "home"){
     </div>
   </div>
 </div>
-	
-	);
-}
-else if(tab === "itemView"){
- 
-  return(
-<ItemView
- itemSelected={this.props.itemSelected}
-/>
   );
 }
-else{
+Product=()=>{
   return(
-  <h2>  Orders </h2>
-  );
+  <ItemView/>
+  )
 }
+MyOrders=()=>{
+  return(
+      <h2>  Orders </h2>
+      );
+}
+render(){
+  
+return(
+
+    <Switch>
+   
+          <Route path="/addItems">
+          <this.AddItems/>
+           </Route>
+           <Route path="/Product/:id" component={ItemView}/>
+           <Route path="/Myorders"><this.MyOrders/></Route>
+           <Route path="/" exact>
+              <this.Home/>
+          </Route>
+      </Switch>
+   
+)
+  
+
 }
 }
 export default Body;
