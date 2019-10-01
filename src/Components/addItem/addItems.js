@@ -27,6 +27,7 @@ class addItems extends Component {
 
 }
 componentDidMount(){
+  if(this.props.isAdmin)
   document.getElementById("form-itemid").addEventListener("focusout", this.idEntered);
 }
 
@@ -183,7 +184,25 @@ docRef.get().then(function(doc) {
   }
   }
 handleDragover(event){
-	
+  console.log(event.target.files[0]);
+  let files= event.target.files[0];
+  this.setState({ image: files, imageSelected:true })
+  var img = document.querySelector('img'); 
+
+    if (files.type === "image/jpeg" || files.type === "image/png" ) {
+     
+        img.src = URL.createObjectURL(files); // set src to file url
+        this.setState({
+                    imageadded : true
+                  })
+
+  }else{
+    img.src="https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
+this.setState({
+          imageadded : false
+        })
+    window.alert("invalid file type")
+  }
 }
   
 clear(){
@@ -196,20 +215,25 @@ clear(){
 }
   render() {
    
-     
+     console.log(this.props.isAdmin);
+     if(!this.props.isAdmin){
+       return(
+         <h2> Sorry you are not Admin</h2>
+       )
+     }
     return (
     	<div className="fluid home ">
     	<div className="row">
   <div className="col-3" >
     <FileDrop 
     onDrop={this.handleDrop}
-    onDragOver={this.handleDragover} 
+     
 
     >
         <Image src='https://www.mbsplugins.de/images/drop-files-here-extra.jpg' id="addimage" size='large' rounded floated='left'
-        	onClick={this.handleDragover}
         
-        />
+        
+        /><input type="file" onChange={(event)=> { this.handleDragover(event) }}></input>
          <progress value={this.state.progress} max="100" hidden/>
       
         </FileDrop>
@@ -224,7 +248,7 @@ clear(){
        <div className="alert alert-danger" role="alert" id ="takenid" hidden>
  Item already added!!
 </div>
-<div class="alert alert-success" role="alert" id = "uniqueid" hidden>
+<div className="alert alert-success" role="alert" id = "uniqueid" hidden>
   item can be added...
 </div>
 <div  className = "itemspacing">

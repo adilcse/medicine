@@ -1,14 +1,18 @@
 import React,{Component} from 'react';
 import {Icon,Item} from 'semantic-ui-react';
 import Searchcomponent from '../search/Search';
-
+import AddItems from '../addItem/addItems';
 import Popup from "reactjs-popup";
 import Login from '../login/Login';
 import Register from '../register/Register';
+import  { Route, Link } from "react-router-dom";
+
 class Nav extends Component{
 	constructor(props){
 		super(props);
+		
 }
+
 	render(){
 		
 
@@ -42,14 +46,16 @@ class Nav extends Component{
 	    }
 	    else if(this.props.isAdmin){
 	    		button = <li className="nav-item btn-group active " align="right"   >
-         <a className="nav-link"   href="#" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </a>
+				
+         <Link className="nav-link"   to="/" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
          <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
-          <a className="nav-link " href="#" onClick={this.props.addItems}> Add Items  <Icon name='add' size='large' /> </a>
-
+          <Link className="nav-link " to="/addItems"> Add Items  <Icon name='add' size='large' /> </Link>
+		 
+		 
       </li>;
 	    }else{
 	    	button = <li className="nav-item btn-group active " align="right"   >
-         <a className="nav-link"   href="#" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </a>
+         <Link className="nav-link"   to='/' onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
          <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
 
       </li>;
@@ -57,19 +63,19 @@ class Nav extends Component{
 		return(
 		<div align="center">
 		<nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" align="left">
-  <a className="navbar-brand" href="#"> <Icon name='leaf' size='large' /> MedLife </a>
+  <Link className="navbar-brand" to="/"> <Icon name='leaf' size='large' /> MedLife </Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
-      <li className="nav-item" className={this.props.home} onClick={()=>this.props.activestate("home")}>
-        <a className="nav-link" href="#">Home <Icon name='play' size='large' /> </a>
+      <li className="nav-item" className={this.props.home}>
+        <Link className="nav-link active" to="/" >Home <Icon name='play' size='large' /> </Link>
       </li>
       
-      <li className="nav-item" className={this.props.myorder} onClick={()=>this.props.activestate("myorder")}>
-        <a className="nav-link" href="#">My Orders <Icon name='cart' size='large' /> </a>
+      <li className="nav-item" className={this.props.myorder} >
+        <Link className="nav-link active" to="/Myorders">My Orders <Icon name='cart' size='large' /> </Link>
       </li>
      
       <li align="center"> 
