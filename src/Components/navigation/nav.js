@@ -23,7 +23,7 @@ class Nav extends Component{
 	       <Popup 
 	       	  open={this.props.signinopen}
 	        trigger={  <a className="nav-link" href="#" align="right" >	sign in <Icon name='sign-in' size='large' /> </a>}
-	        position=" center center"
+	      
 	        modal
 	        closeOnDocumentClick
 	         onClose={()=>this.props.signinbox(false)}
@@ -34,7 +34,7 @@ class Nav extends Component{
 	   <Popup
 	       	  open={this.props.registeropen}
 	        trigger={ <a className="nav-link" href="#" align="right" >	sign up <Icon name='signup' size='large' /> </a>}
-	        position=" center center"
+	       
 	        modal
 	        closeOnDocumentClick
 	         onClose={()=>this.props.registerbox(false)}

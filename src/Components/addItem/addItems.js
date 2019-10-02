@@ -13,7 +13,8 @@ class addItems extends Component {
    this.state = {
     image:"",
     imageadded : false,
-    formvalid : false
+    formvalid : false,
+    isAdmin :props.isAdmin
     
      };
    
@@ -26,10 +27,7 @@ class addItems extends Component {
     
 
 }
-componentDidMount(){
-  if(this.props.isAdmin)
-  document.getElementById("form-itemid").addEventListener("focusout", this.idEntered);
-}
+
 
 
  
@@ -53,6 +51,7 @@ this.setState({
     }
   }
   idEntered=()=>{
+    console.log("id added")
     const obj = this;
    const idbox =  document.getElementById("form-itemid");
    const errorbox = document.getElementById("takenid");
@@ -220,7 +219,8 @@ clear(){
        return(
          <h2> Sorry you are not Admin</h2>
        )
-     }
+     }else{
+ 
     return (
     	<div className="fluid home ">
     	<div className="row">
@@ -242,8 +242,9 @@ clear(){
   <div className="col-5" align = "left" >
       <Form>
         <div  className = "itemspacing">
-      <lable for ="form-itemid" ><strong>Item Id</strong></lable>
-       <input   id="form-itemid" type="text" placeholder = "Enter Id" required />
+      <strong>Item Id</strong>
+       <input   id="form-itemid" type="text" placeholder = "Enter Id" required onChange={this.idEntered} />
+   
        </div>
        <div className="alert alert-danger" role="alert" id ="takenid" hidden>
  Item already added!!
@@ -252,17 +253,16 @@ clear(){
   item can be added...
 </div>
 <div  className = "itemspacing">
-
-       <lable for ="form-itemname" ><strong>Item Name</strong></lable>
+<strong>Item Name</strong>
        <input  id="form-itemname" type="text" placeholder = "Item Name" required/>
        </div>
        <div  className = "itemspacing">
 
-       <lable for ="form-itemtype" ><strong>Item Type</strong></lable>
+       <strong>Item Type</strong>
        <input  id="form-itemtype" type="text" placeholder = "Item Type" required/>
        </div>
        <div  className = "itemspacing">
-       <lable  for ="form-itemprice" ><strong>Item Price</strong></lable>
+       <strong>Item Price</strong>
        <input  id="form-itemprice" type="text" placeholder = "Item Price" required/>
        </div>
     
@@ -295,7 +295,10 @@ clear(){
   <div className="col-4"></div>
 </div>
   </div>
+ 
     )
+    
+  }
   }
 }
 
