@@ -72,7 +72,9 @@ Home=()=>{
     if(this.state.loaded<this.state.loadmax){
     this.fetchitems();
     console.log("item not fetched");
-    return <div><h2>Loading</h2></div>
+    return <div className="load" status="load">
+    <span className="spinner-grow spinner-grow-sm" role="status"></span>
+    <h2>Loading</h2></div>
   }
 	return(<div className=" home container">
         	{this.state.source.map((data,i)=>{

@@ -48,13 +48,25 @@ class ItemView extends Component{
          if(this.state.item )
        { return(
 <div>
-    <h1>{this.state.item.name}</h1>
-    <div></div>
-  </div>
+            <div className="heading">
+            <h1>{this.state.item.name}</h1>
+            </div>
+<div className="item">
+    <img src={this.state.item.imageurl} alt={this.state.item.name}/>
+    <ul>
+    <li><input className="btnn" type="submit" value="checkout"></input></li>
+    <li><input className="btnn" type="submit" value="add to cart"/></li>
+    </ul>
+    <span className="pcolor"><p>{this.state.item.description}</p></span>
+    <span className="pcolor"><p>Only {this.state.item.price} Rupees with 10% discount </p></span>
+    </div>
+    </div>
         )}
         else {
             return(
-            <h2>Loading</h2>
+            <div className="load">
+    <span className="spinner-grow spinner-grow-sm" role="status"></span>
+    <h2>Loading</h2></div>
             )
         }
     }
