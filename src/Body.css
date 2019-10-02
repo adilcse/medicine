@@ -31,3 +31,6 @@
 
 
 }
+.load{
+	transform: translateY(400px);
+}

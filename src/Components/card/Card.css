@@ -12,10 +12,10 @@ overflow: hidden;
 h6{
 
 }
-img{
-	max-width: 300px;
-	width: 100px;
-	height: 100px;
+div img{
+	
+	width: 150px;
+	height: 150px;
 
 }
 .bd{
