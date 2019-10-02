@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 import  {  Link } from "react-router-dom";
-function Card({image,title,desc,price,dis,itemClicked,source}){
+function Card({source}){
   
 return(
  
