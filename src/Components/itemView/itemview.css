@@ -1,5 +1,5 @@
 .item{
-	transform: translateY(40%);
+	transform: translateY(10%);
 	margin: 0px 7rem 0px 7rem;
 	padding: 10px 0px 10px 0px;
 	background-color: rgba(82, 242, 101,.3);
@@ -9,17 +9,17 @@
 }
 .heading{
 	padding: 10px 0px 10px 0px;
-	margin: 10px 200px 10px 200px;
+	margin: 10px 200px 5px 200px;
 	background-color: rgba(82, 242, 101,.3);
 	border: 1px solid green;
 	border-radius: 10px 30px;
 	box-shadow: 7px 7px 20px black;
 }
-img{
-	height: 300px;
-	width: 300px;
-	padding: 10px;
-	margin: 15px 4px 4px 4px;
+.item img{
+	height: 400px;
+	width: 400px;
+	padding: 5px;
+	margin: 10px 4px 4px 4px;
 	box-shadow: 3px 3px 12px black;
 	border-radius: 9px;
 }
