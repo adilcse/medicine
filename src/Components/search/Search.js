@@ -4,21 +4,26 @@ import React, { Component } from 'react';
 import {Search,Grid} from 'semantic-ui-react';
 import './search.css'
 import {firebase,db} from '../../firebaseconnect';
+import  {  Redirect } from "react-router-dom";
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
 document.head.appendChild(styleLink);
 
 
-const initialState = { isLoading: false, results: [], value: '' }
+const initialState = { isLoading: false, results: [], value: '',redirect : false }
 
 export default class SearchComponent extends Component {
   state = initialState
  
   handleResultSelect = (e, { result }) => {
  // do when a result is selected
- console.log(result.name);
-this.setState({ value: result.name })
+ console.log(result);
+this.setState({ value: result.title,
+                redirecturl : result.item_id,
+                redirect : true
+});
+
   }
 
   handleSearchChange = (e, { value }) => {
@@ -38,8 +43,8 @@ this.setState({ value: result.name })
             console.log(doc.id, " => ", doc.data());
             ares.title = doc.data().name;
             ares.image = doc.data().imageurl;
-            
-            ares.price = "$" + doc.data().price;
+            ares.item_id=doc.data().item_id;
+            ares.price = "Rs. " + doc.data().price;
 
           res.push(ares);
         });
@@ -63,8 +68,15 @@ this.setState({ value: result.name })
   }
 
   render() {
-    const { isLoading, value, results } = this.state
-
+    const { isLoading, value, results,redirect,redirecturl } = this.state;
+    let re;
+    if(redirect){
+      console.log(redirect,redirecturl);
+     
+      re= <Redirect to={`/Product/${redirecturl}`}/>
+      
+      
+    }
     return (
        <Grid >
         <Grid.Column width={8}>
@@ -84,6 +96,7 @@ this.setState({ value: result.name })
             {...this.props}
           
           />
+          {re}
         </Grid.Column>
         </Grid>
      

@@ -8,20 +8,38 @@ import ItemView from './Components/itemView/ItemView';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import { thisExpression } from '@babel/types';
 let source= new Array ();
+let lastsnapshot=null;
+const MAX=2;
 class Body extends Component{
 constructor(props){
 super(props)
-
+this.state={
+  source : [],
+ loadmax :MAX,
+loaded : 0
+  
+}
 this.fetchitems = this.fetchitems.bind(this);
 this.Home = this.Home.bind(this);
 this.AddItems = this.AddItems.bind(this);
 this.Product = this.Product.bind(this);
 this.MyOrders = this.MyOrders.bind(this);
+this.LoadMore = this.LoadMore.bind(this);
 }
 fetchitems=()=>{
+  let query;
+ this.setState({
+   loaded: this.state.loaded+MAX
+ })
 
- 
-  db.collection("Items").orderBy("name").limit(10).get().then(function(querySnapshot) {
+ if(source.length>0){
+   query =db.collection("Items").orderBy("name").startAfter(source[source.length-1].name);
+ }
+ else{
+  query =db.collection("Items").orderBy("name");
+ }
+ query.limit(MAX).get().then(function(querySnapshot) {
+   
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
        
@@ -31,26 +49,38 @@ fetchitems=()=>{
 }).then(()=>{
  console.log(source);
   this.setState({
-    itemfetched :true
+    itemfetched :true,
+    source : source
   })
 });
 
 
 }
+LoadMore=()=>{
+return(
+  <div>
+    <button className="btn" onClick={()=>{
+     this.setState({loadmax : this.state.loadmax+MAX})
+    }}>More....</button>
+  </div>
+)
 
+  
+}
 Home=()=>{
   console.log("home called");
-    if(source.length<9){
+    if(this.state.loaded<this.state.loadmax){
     this.fetchitems();
     console.log("item not fetched");
     return <div><h2>Loading</h2></div>
   }
 	return(<div className=" home container">
-        	{source.map((data,i)=>{
+        	{this.state.source.map((data,i)=>{
         	 return	<Card key={i} 
                 source={data}
         		/>
-        	})}
+          })}
+         <this.LoadMore/>
        </div>);
 }
 AddItems=()=>{

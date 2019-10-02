@@ -23,10 +23,10 @@ if (user) {
   var errorCode = error.code;
   var errorMessage = error.message;
     console.log(errorCode);
-   if(errorCode=="auth/user-not-found"){
+   if(errorCode==="auth/user-not-found"){
     invaliddata = "user not found";
  
-   }else if(errorCode=="auth/wrong-password"){
+   }else if(errorCode==="auth/wrong-password"){
     invaliddata = "wrong password please try again";
      
    }

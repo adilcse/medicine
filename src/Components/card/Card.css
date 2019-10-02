@@ -12,10 +12,12 @@ overflow: hidden;
 h6{
 
 }
-img{
+
+.card-img{
 	max-width: 300px;
+	align-items :center;
 	width: 100px;
-	height: 100px;
+	height: 150px;
 
 }
 .bd{
