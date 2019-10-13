@@ -9,6 +9,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
+import { thisExpression } from '@babel/types';
 let source= new Array ();
 let lastsnapshot=null;
 const MAX=5;
@@ -32,7 +33,7 @@ this.MyProfile = this.MyProfile.bind(this);
 }
 MyCart=()=>{
   return(
-    <Mycart/>
+    <Mycart cartitems={this.props.cartitems}/>
     );
 }
 fetchitems=()=>{
@@ -89,7 +90,7 @@ Home=()=>{
   let load;
     if(this.state.loaded<this.state.loadmax){
     this.fetchitems();
-    console.log("item not fetched");
+   
     return <div className="load" status="load">
     <span className="spinner-grow spinner-grow-sm" role="status"></span>
     <h2>Loading</h2></div>
@@ -151,7 +152,7 @@ MyProfile=()=>{
       );
 }
 render(){
- 
+
   
 return(
 
@@ -160,7 +161,7 @@ return(
           <Route path="/addItems">
           <this.AddItems/>
            </Route>
-           <Route path="/Product/:id" exact render={props => <ItemView {...props} />}/>
+           <Route path="/Product/:id" exact render={props=><ItemView addtocart={this.props.addtocart} {...props}/>}/>
            <Route path="/Myorders"><this.MyOrders/></Route>
             <Route path="/Mycart"><this.MyCart/></Route>
             <Route path="/Profile"><this.MyProfile/></Route>

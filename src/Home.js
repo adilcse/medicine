@@ -1,19 +1,17 @@
 import React,{Component} from 'react';
-import {Icon,Item} from 'semantic-ui-react';
-import Searchcomponent from './Components/search/Search';
+
 import "./Home.css";
-import Popup from "reactjs-popup";
-import Login from './Components/login/Login';
+
 import Body from './Body';
-import Orders from './Components/myorders/orders';
+
 import Nav from './Components/navigation/nav';
 import {db,firebase} from './firebaseconnect';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
-
+let cartRef;
  
 
 class Home extends Component{
-	
+  
 	constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +20,8 @@ class Home extends Component{
       searchurl : null,
      signedin : false,
      isAdmin :false,
-    
+    cartitems:[],
+     
      useremail :""
     
      };
@@ -32,47 +31,69 @@ class Home extends Component{
     
      this.searchchanged = this.searchchanged.bind(this);
 	 this.trylogin = this.trylogin.bind(this);
-	  this.signout = this.signout.bind(this);
-  
-
-	  let obj=this;
-firebase.auth().onAuthStateChanged(function(user) {
-
-  if (user) {
-    const uid=user.uid;
-  	let userRef = db.collection('LastUser').doc(uid);
-let getDoc = userRef.get()
-  .then(doc => {
-    if (!doc.exists) {
-      console.log('user not admin');
-       obj.setState({
-    isAdmin:false
-   });
-    } else {
+    this.signout = this.signout.bind(this);
+    this.addtocart = this.addtocart.bind(this);
     
-      let userdetails = doc.data();
-      if(userdetails.type === "admin"){
-        obj.setState({
-    isAdmin:true,
-    useremail : userdetails.email
-   });
-      }
-    }
-  })
-  .catch(err => {
-    console.log('Error getting document', err);
-  });
-   obj.setState({
-   	user:user,
-   	signedin:true
 
-   });
-  } else {
-  	console.log("check");
-     obj.setState({user:false});
-  }
-});
 	 
+
+	 
+  }
+  componentDidMount(){
+    let obj=this;
+    firebase.auth().onAuthStateChanged(function(user) {
+     
+      if (user) {
+        const uid=user.uid;
+        let userRef = db.collection('LastUser').doc(uid);
+    let getDoc = userRef.get()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('user not exist');
+           obj.setState({
+        isAdmin:false
+       });
+        } else {
+          let userdetails = doc.data();
+          obj.setState({
+            uid:doc.id,
+            useremail : userdetails.email,
+            user:user,
+            signedin:true
+           });
+         
+          if(userdetails.type === "admin"){
+            obj.setState({
+        isAdmin:true
+       
+       });
+          }
+        }
+        return doc.data();
+      }).then(user=>{
+       userRef.collection("Cart").onSnapshot(function(querySnapshot) {
+        var items = [];
+        querySnapshot.forEach(function(doc) {
+            items.push(doc.data());
+        });
+       obj.setState({
+         cartitems:items
+       })
+    });
+      })
+      .catch(err => {
+        console.log('Error getting document', err);
+      });
+      
+      } else {
+        console.log("check");
+         obj.setState({user:false,
+          signedin: false
+        });
+      }
+    });
+   
+    
   }
   signinbox(status) {
     this.setState({ signinopen: status });
@@ -94,14 +115,7 @@ if(status)
 {	x.setState({
 			signedin:true
 		});
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    x.setState({user:user});
-  } else {
-     x.setState({user:false});
 
-  }
-});
 
 }else{
 	x.setState({
@@ -132,7 +146,24 @@ searchchanged(url){
 
 
 }
+addtocart=(item)=>{
+  
+cartRef=db.collection("LastUser").doc(this.state.uid).collection("Cart");
+ cartRef.doc(item.item_id).set({
+   item : item,
+   numbers :  firebase.firestore.FieldValue.increment(1)
+  
+}, { merge: true })
+.then(function() {
+  console.log("item added to cart");
+})
+.catch(function(error) {
+  console.error("Error writing document: ", error);
+});
 
+
+  
+}
 render(){
 
 return(
@@ -150,11 +181,13 @@ return(
   signout={this.signout}
   isAdmin={this.state.isAdmin}
   searchchanged={this.searchchanged}
-
+  cartitems={this.state.cartitems}
   />
 
     <Body 
      isAdmin={this.state.isAdmin}
+     addtocart={this.addtocart}
+     cartitems={this.state.cartitems}
     />
    
   </div>

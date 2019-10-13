@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './itemview.css'
-import {firebase,db} from '../../firebaseconnect';
-import { async } from 'q';
-import { tsModuleBlock } from '@babel/types';
+import {db} from '../../firebaseconnect';
+
 
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
@@ -15,9 +14,11 @@ class ItemView extends Component{
         super(props);
         this.state={
             item:null,
-          id : null
+          id : null,
+          itemsincart:0
         }
         this.fetchItem=this.fetchItem.bind(this);
+      console.log(this.props)
     }
     componentWillMount(){
         this.setState({
@@ -49,7 +50,9 @@ class ItemView extends Component{
     componentDidMount(){
         this.fetchItem();
     }
+   
     render(){
+        console.log(this.props);
          if(this.state.item )
        { return(
 <div>
@@ -60,7 +63,7 @@ class ItemView extends Component{
     <img src={this.state.item.imageurl} alt={this.state.item.name}/>
     <ul>
     <li><input className="btnn" type="submit" value="checkout"></input></li>
-    <li><input className="btnn" type="submit" value="add to cart"/></li>
+    <li><input className="btnn" type="submit" value="add to cart" onClick={()=>this.props.addtocart(this.state.item)}/></li>
     </ul>
     <span className="pcolor"><p>{this.state.item.description}</p></span>
     <span className="pcolor"><p>Only {this.state.item.price} Rupees with 10% discount </p></span>

@@ -48,16 +48,16 @@ class Nav extends Component{
 	    		button = <li className="nav-item btn-group active " align="right"   >
 				
          <Link className="nav-link"   to="/" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
-         <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
+         <Link className="nav-link" to="/Profile"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
           <Link className="nav-link " to="/addItems"> Add Items  <Icon name='add' size='large' /> </Link>
-		  <Link className="nav-link " to="/Mycart">Cart  <Icon name='cart' size='large' /> </Link>
+		  <Link className="nav-link " to="/Mycart">Cart <Icon name='cart' size='large' /> {this.props.cartitems.length}</Link>
 		 
       </li>;
 	    }else{
 	    	button = <li className="nav-item btn-group active " align="right"   >
          <Link className="nav-link"   to='/' onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
          <Link className="nav-link" to="/Profile"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
-		 <Link className="nav-link " to="/Mycart">Cart  <Icon name='cart' size='large' /> </Link>
+		 <Link className="nav-link " to="/Mycart">Cart <Icon name='cart' size='large' /> {this.props.cartitems.length}</Link>
       </li>;
 	    }
 		return(

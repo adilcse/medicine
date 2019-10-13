@@ -1,7 +1,9 @@
 import React from 'react';
 import './Register.css';
+import { db } from '../../firebaseconnect';
 
 function Register({cancel,register,firebase}) {
+  const db=firebase.firestore();
   function googlesignin(){
   var provider = new firebase.auth.GoogleAuthProvider();
  firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -9,7 +11,19 @@ function Register({cancel,register,firebase}) {
   var token = result.credential.accessToken;
   // The signed-in user info.
   var user = result.user;
- console.log(user.email);
+ console.log(user);
+ db.collection("LastUser").doc(user.uid).set({
+  name: user.displayName ,
+  email: user.email,
+  type : "user",
+  timestamp: firebase.firestore.FieldValue.serverTimestamp()
+})
+.then(function() {
+  console.log("user added to database");
+})
+.catch(function(error) {
+  console.error("Error writing document: ", error);
+});
  register(user);
 }).catch(function(error) {
   // Handle Errors here.
@@ -37,10 +51,22 @@ user.user.updateProfile({
   displayName: name,
  
 }).then(function() {
-  console.log("name added");
+ 
+  db.collection("LastUser").doc(user.user.uid).set({
+    name: user.user.displayName ,
+    email: email,
+    type : "user",
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+})
+.then(function() {
+    console.log("user added to database");
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+});
   register(user.user);
 }).catch(function(error) {
-  console.log("name adding failed");
+  console.log("name adding failed",error);
 });
 
 }).catch(function(error) {
