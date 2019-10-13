@@ -6,10 +6,12 @@ import AddItems from './Components/addItem/addItems';
 import {db} from './firebaseconnect';
 import ItemView from './Components/itemView/ItemView';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
-import { thisExpression } from '@babel/types';
+import Mycart from './Components/cart/Mycart';
+import Profile from './Components/profile/Profile';
+import Orders from './Components/myorders/orders';
 let source= new Array ();
 let lastsnapshot=null;
-const MAX=2;
+const MAX=5;
 class Body extends Component{
 constructor(props){
 super(props)
@@ -24,12 +26,20 @@ this.Home = this.Home.bind(this);
 this.AddItems = this.AddItems.bind(this);
 this.Product = this.Product.bind(this);
 this.MyOrders = this.MyOrders.bind(this);
+this.MyCart = this.MyCart.bind(this);
 this.LoadMore = this.LoadMore.bind(this);
+this.MyProfile = this.MyProfile.bind(this);
+}
+MyCart=()=>{
+  return(
+    <Mycart/>
+    );
 }
 fetchitems=()=>{
   let query;
  this.setState({
-   loaded: this.state.loaded+MAX
+   loaded: this.state.loaded+MAX,
+   itemfetched :false
  })
 
  if(source.length>0){
@@ -44,7 +54,7 @@ fetchitems=()=>{
         // doc.data() is never undefined for query doc snapshots
        
         source.push(doc.data());
-        console.log(source.length);
+       
     });
 }).then(()=>{
  console.log(source);
@@ -57,18 +67,26 @@ fetchitems=()=>{
 
 }
 LoadMore=()=>{
+ if(this.state.loaded<=this.state.source.length)
 return(
   <div>
+   
+   
     <button className="btn" onClick={()=>{
      this.setState({loadmax : this.state.loadmax+MAX})
     }}>More....</button>
+
   </div>
 )
-
+else{
+  return(
+    <h1>No more items....</h1>
+  )
+}
   
 }
 Home=()=>{
-  console.log("home called");
+  let load;
     if(this.state.loaded<this.state.loadmax){
     this.fetchitems();
     console.log("item not fetched");
@@ -76,13 +94,26 @@ Home=()=>{
     <span className="spinner-grow spinner-grow-sm" role="status"></span>
     <h2>Loading</h2></div>
   }
+  
+  if(this.state.itemfetched){
+   load= <this.LoadMore/>
+  }
+  else{
+    load=<h1>Loading</h1>
+  }
 	return(<div className=" home container">
         	{this.state.source.map((data,i)=>{
         	 return	<Card key={i} 
                 source={data}
         		/>
-          })}
-         <this.LoadMore/>
+          })
+    
+          
+        
+          
+            }
+          
+          {load}
        </div>);
 }
 AddItems=()=>{
@@ -111,10 +142,16 @@ Product=()=>{
 }
 MyOrders=()=>{
   return(
-      <h2>  Orders </h2>
+      <Orders/>
+      );
+}
+MyProfile=()=>{
+  return(
+      <Profile/>
       );
 }
 render(){
+ 
   
 return(
 
@@ -123,8 +160,10 @@ return(
           <Route path="/addItems">
           <this.AddItems/>
            </Route>
-           <Route path="/Product/:id" component={ItemView}/>
+           <Route path="/Product/:id" exact render={props => <ItemView {...props} />}/>
            <Route path="/Myorders"><this.MyOrders/></Route>
+            <Route path="/Mycart"><this.MyCart/></Route>
+            <Route path="/Profile"><this.MyProfile/></Route>
            <Route path="/" exact>
               <this.Home/>
           </Route>

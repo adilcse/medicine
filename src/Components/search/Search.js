@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {Search,Grid} from 'semantic-ui-react';
 import './search.css'
 import {firebase,db} from '../../firebaseconnect';
-import  {  Redirect } from "react-router-dom";
+import  {  Redirect ,Route} from "react-router-dom";
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
@@ -18,14 +18,13 @@ export default class SearchComponent extends Component {
  
   handleResultSelect = (e, { result }) => {
  // do when a result is selected
- console.log(result);
+
 this.setState({ value: result.title,
                 redirecturl : result.item_id,
                 redirect : true
 });
-
+this.props.searchchanged(result.item_id)
   }
-
   handleSearchChange = (e, { value }) => {
     const obj = this;
    let res=[];
@@ -40,7 +39,7 @@ this.setState({ value: result.title,
         querySnapshot.forEach(function(doc) {
           let ares={}
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
+     
             ares.title = doc.data().name;
             ares.image = doc.data().imageurl;
             ares.item_id=doc.data().item_id;
@@ -71,9 +70,12 @@ this.setState({ value: result.title,
     const { isLoading, value, results,redirect,redirecturl } = this.state;
     let re;
     if(redirect){
-      console.log(redirect,redirecturl);
-     
+
+   
       re= <Redirect to={`/Product/${redirecturl}`}/>
+   
+      window.location = window.location.origin.toString()+`/Product/${redirecturl}`;
+     
       
       
     }
@@ -88,7 +90,7 @@ this.setState({ value: result.title,
              aligned="left"
             loading={isLoading}
             onResultSelect={this.handleResultSelect}
-            onSearchChange={_.debounce(this.handleSearchChange, 200, {
+            onSearchChange={_.debounce(this.handleSearchChange, 10, {
               leading: true,
             })}
             results={results}

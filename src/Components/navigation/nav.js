@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import {Icon,Item} from 'semantic-ui-react';
+import {Icon} from 'semantic-ui-react';
 import Searchcomponent from '../search/Search';
-import AddItems from '../addItem/addItems';
+
 import Popup from "reactjs-popup";
 import Login from '../login/Login';
 import Register from '../register/Register';
-import  { Route, Link } from "react-router-dom";
+import  {  Link } from "react-router-dom";
 
 class Nav extends Component{
 	constructor(props){
@@ -50,14 +50,14 @@ class Nav extends Component{
          <Link className="nav-link"   to="/" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
          <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
           <Link className="nav-link " to="/addItems"> Add Items  <Icon name='add' size='large' /> </Link>
-		 
+		  <Link className="nav-link " to="/Mycart">Cart  <Icon name='cart' size='large' /> </Link>
 		 
       </li>;
 	    }else{
 	    	button = <li className="nav-item btn-group active " align="right"   >
          <Link className="nav-link"   to='/' onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
-         <a className="nav-link" href="#"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </a>
-
+         <Link className="nav-link" to="/Profile"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
+		 <Link className="nav-link " to="/Mycart">Cart  <Icon name='cart' size='large' /> </Link>
       </li>;
 	    }
 		return(
@@ -79,9 +79,11 @@ class Nav extends Component{
       </li>
      
       <li align="center"> 
-       <Searchcomponent className=" wd"   />
+       <Searchcomponent className=" wd" searchchanged={this.props.searchchanged}  />
       </li>
-     
+     {
+		
+	 }
      {button}
       
  		</ul>

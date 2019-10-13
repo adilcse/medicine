@@ -15,15 +15,20 @@ class ItemView extends Component{
         super(props);
         this.state={
             item:null,
-            id:this.props.match.params.id
+          id : null
         }
         this.fetchItem=this.fetchItem.bind(this);
+    }
+    componentWillMount(){
+        this.setState({
+            id :this.props.match.params.id
+        })
     }
     fetchItem=()=>{
         const obj=this;
         db.collection("Items").doc(this.state.id).get().then(function(doc) {
             if (doc.exists) {
-                console.log("Document data:", doc.data());
+               
                 obj.setState({
                     item : doc.data()
                 })

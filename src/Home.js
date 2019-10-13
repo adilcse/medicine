@@ -19,7 +19,7 @@ class Home extends Component{
     this.state = {
      signinopen: false,
      registeropen:false,
-    
+      searchurl : null,
      signedin : false,
      isAdmin :false,
     
@@ -30,7 +30,7 @@ class Home extends Component{
    
      this.registerbox = this.registerbox.bind(this);
     
-	
+     this.searchchanged = this.searchchanged.bind(this);
 	 this.trylogin = this.trylogin.bind(this);
 	  this.signout = this.signout.bind(this);
   
@@ -49,7 +49,7 @@ let getDoc = userRef.get()
     isAdmin:false
    });
     } else {
-      console.log('Document data:', doc.data());
+    
       let userdetails = doc.data();
       if(userdetails.type === "admin"){
         obj.setState({
@@ -124,10 +124,17 @@ signout(){
 			 registeropen: false
 		});
 }
+searchchanged(url){
+	this.setState({
+    searchurl : url
+  });
+  
 
+
+}
 
 render(){
-	
+
 return(
   <Router>
   <div>
@@ -142,7 +149,7 @@ return(
   user={this.state.user}
   signout={this.signout}
   isAdmin={this.state.isAdmin}
-  
+  searchchanged={this.searchchanged}
 
   />
 
