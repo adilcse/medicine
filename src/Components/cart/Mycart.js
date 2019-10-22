@@ -11,7 +11,7 @@ constructor(props){
     }
 }
     checkout=()=>{
-        this.props.checkoutf(this.props.cartitems,total);
+        this.props.checkoutf(this.props.cartitems,total,"cart");
        this.setState({
            checkout : true
        })
@@ -44,7 +44,7 @@ constructor(props){
             <div classNAme="container">
             <div className="row">
               <div className="col">
-                1 of 3
+                
               </div>
               <div className="col-6 bd">
             

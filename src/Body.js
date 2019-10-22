@@ -162,6 +162,8 @@ Checkout=()=>{
       <Checkout
       checkout={this.props.checkout}
       user={this.props.user}
+      cart={this.props.cartitems}
+      {...this.props}
       />
       );
 }

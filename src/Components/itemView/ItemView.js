@@ -57,21 +57,22 @@ class ItemView extends Component{
     render(){
         console.log(this.props);
          if(this.state.item )
-       { return(
-<div>
-            <div className="heading">
-            <h1>{this.state.item.name}</h1>
-            </div>
-<div className="item">
+       { return(       
+<div className="container item">
     <img src={this.state.item.imageurl} alt={this.state.item.name}/>
-    <ul>
-    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,this.state.item.price)}><button className="btn btn-primary"> checkout</button></Link></li>
-    <li><button className="btn btn-primary" onClick={()=>this.props.addtocart(this.state.item)}> add to cart</button></li>
+    <ul><li><h1>{this.state.item.name}</h1></li>    
+        <li><h1>Price :  {this.state.item.price} Only </h1>
+    <p>  with 10% discount </p>
+    </li>
+    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,this.state.item.price,"item")}>
+        <button className="btn btn-info"> checkout</button></Link></li>
+    <li><button className="btn btn-warning" onClick={()=>this.props.addtocart(this.state.item)}> add to cart</button></li>
+    <li><p>{this.state.item.description}</p></li>
     </ul>
-    <span className="pcolor"><p>{this.state.item.description}</p></span>
-    <span className="pcolor"><p>Only {this.state.item.price} Rupees with 10% discount </p></span>
+    <span className="pcolor"></span>
+    <span className="pcolor"></span>
     </div>
-    </div>
+  
         )}
         else {
             return(

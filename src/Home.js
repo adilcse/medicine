@@ -170,11 +170,12 @@ cartRef=db.collection("LastUser").doc(this.state.uid).collection("Cart");
 
   
 }
-checkout=(items,price)=>{
+checkout=(items,price,via)=>{
   this.setState({
     checkout :{
       items : items,
-      price : price
+      price : price,
+      via : via
     
     }
   })
