@@ -71,7 +71,7 @@ class Home extends Component{
         }
         return doc.data();
       }).then(user=>{
-       userRef.collection("Cart").onSnapshot(function(querySnapshot) {
+       userRef.collection("Cart").orderBy("time", "desc").onSnapshot(function(querySnapshot) {
         var items = [];
         querySnapshot.forEach(function(doc) {
             items.push(doc.data());
@@ -151,7 +151,8 @@ addtocart=(item)=>{
 cartRef=db.collection("LastUser").doc(this.state.uid).collection("Cart");
  cartRef.doc(item.item_id).set({
    item : item,
-   numbers :  firebase.firestore.FieldValue.increment(1)
+   time : firebase.firestore.FieldValue.serverTimestamp(),
+   numbers : 1
   
 }, { merge: true })
 .then(function() {
@@ -182,12 +183,14 @@ return(
   isAdmin={this.state.isAdmin}
   searchchanged={this.searchchanged}
   cartitems={this.state.cartitems}
+  user = {this.state.user}
   />
 
     <Body 
      isAdmin={this.state.isAdmin}
      addtocart={this.addtocart}
      cartitems={this.state.cartitems}
+     user = {this.state.user}
     />
    
   </div>

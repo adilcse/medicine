@@ -33,7 +33,9 @@ this.MyProfile = this.MyProfile.bind(this);
 }
 MyCart=()=>{
   return(
-    <Mycart cartitems={this.props.cartitems}/>
+    <Mycart cartitems={this.props.cartitems}
+    user={this.props.user}
+    />
     );
 }
 fetchitems=()=>{
@@ -73,7 +75,7 @@ return(
   <div>
    
    
-    <button className="btn" onClick={()=>{
+    <button className="btn-body" onClick={()=>{
      this.setState({loadmax : this.state.loadmax+MAX})
     }}>More....</button>
 

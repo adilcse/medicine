@@ -1,4 +1,4 @@
-.btn {
+.btn-body {
 	background-color: #f4511e;
 	border: none;
 	color: white;
@@ -12,7 +12,7 @@
 	top :10px
   }
   
-.btn:hover {opacity: 0.8}
+.btn-body:hover {opacity: 0.8}
 
 .container{
 	display:grid;
