@@ -21,6 +21,10 @@ class Home extends Component{
      signedin : false,
      isAdmin :false,
     cartitems:[],
+    checkout : {
+            items : [],
+            price : 0
+            },
      
      useremail :""
     
@@ -55,10 +59,11 @@ class Home extends Component{
        });
         } else {
           let userdetails = doc.data();
+          userdetails.uid=doc.id;
           obj.setState({
             uid:doc.id,
             useremail : userdetails.email,
-            user:user,
+            user :userdetails,
             signedin:true
            });
          
@@ -165,6 +170,15 @@ cartRef=db.collection("LastUser").doc(this.state.uid).collection("Cart");
 
   
 }
+checkout=(items,price)=>{
+  this.setState({
+    checkout :{
+      items : items,
+      price : price
+    
+    }
+  })
+}
 render(){
 
 return(
@@ -191,6 +205,8 @@ return(
      addtocart={this.addtocart}
      cartitems={this.state.cartitems}
      user = {this.state.user}
+     checkout = {this.state.checkout}
+     checkoutf={this.checkout}
     />
    
   </div>

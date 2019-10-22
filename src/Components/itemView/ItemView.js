@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './itemview.css'
 import {db} from '../../firebaseconnect';
-
-
+import  { Switch,  Link ,Route} from "react-router-dom";
+import Checkout from "../checkout/Checkout";
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "http://img1a.flixcart.com/www/linchpin/fk-cp-zion/css/app.chunk.0cf296.css";
@@ -18,6 +18,7 @@ class ItemView extends Component{
           itemsincart:0
         }
         this.fetchItem=this.fetchItem.bind(this);
+      
       console.log(this.props)
     }
     componentWillMount(){
@@ -25,6 +26,7 @@ class ItemView extends Component{
             id :this.props.match.params.id
         })
     }
+   
     fetchItem=()=>{
         const obj=this;
         db.collection("Items").doc(this.state.id).get().then(function(doc) {
@@ -50,7 +52,8 @@ class ItemView extends Component{
     componentDidMount(){
         this.fetchItem();
     }
-   
+
+
     render(){
         console.log(this.props);
          if(this.state.item )
@@ -62,8 +65,8 @@ class ItemView extends Component{
 <div className="item">
     <img src={this.state.item.imageurl} alt={this.state.item.name}/>
     <ul>
-    <li><input className="btnn" type="submit" value="checkout"></input></li>
-    <li><input className="btnn" type="submit" value="add to cart" onClick={()=>this.props.addtocart(this.state.item)}/></li>
+    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,this.state.item.price)}><button className="btn btn-primary"> checkout</button></Link></li>
+    <li><button className="btn btn-primary" onClick={()=>this.props.addtocart(this.state.item)}> add to cart</button></li>
     </ul>
     <span className="pcolor"><p>{this.state.item.description}</p></span>
     <span className="pcolor"><p>Only {this.state.item.price} Rupees with 10% discount </p></span>
@@ -74,7 +77,10 @@ class ItemView extends Component{
             return(
             <div className="load">
     <span className="spinner-grow spinner-grow-sm" role="status"></span>
-    <h2>Loading</h2></div>
+    <h2>Loading</h2>
+    
+    </div>
+   
             )
         }
     }

@@ -9,7 +9,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
-import { thisExpression } from '@babel/types';
+import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
 let lastsnapshot=null;
 const MAX=5;
@@ -22,6 +22,7 @@ this.state={
 loaded : 0
   
 }
+
 this.fetchitems = this.fetchitems.bind(this);
 this.Home = this.Home.bind(this);
 this.AddItems = this.AddItems.bind(this);
@@ -30,11 +31,14 @@ this.MyOrders = this.MyOrders.bind(this);
 this.MyCart = this.MyCart.bind(this);
 this.LoadMore = this.LoadMore.bind(this);
 this.MyProfile = this.MyProfile.bind(this);
+this.Checkout = this.Checkout.bind(this);
 }
 MyCart=()=>{
   return(
     <Mycart cartitems={this.props.cartitems}
     user={this.props.user}
+    checkout={this.props.checkout}
+    checkoutf={this.props.checkoutf}
     />
     );
 }
@@ -153,9 +157,17 @@ MyProfile=()=>{
       <Profile/>
       );
 }
+Checkout=()=>{
+  return(
+      <Checkout
+      checkout={this.props.checkout}
+      user={this.props.user}
+      />
+      );
+}
 render(){
 
-  
+ 
 return(
 
     <Switch>
@@ -163,10 +175,11 @@ return(
           <Route path="/addItems">
           <this.AddItems/>
            </Route>
-           <Route path="/Product/:id" exact render={props=><ItemView addtocart={this.props.addtocart} {...props}/>}/>
+           <Route path="/Product/:id" exact render={props=><ItemView addtocart={this.props.addtocart} checkoutf={this.props.checkoutf} {...props}/>}/>
            <Route path="/Myorders"><this.MyOrders/></Route>
             <Route path="/Mycart"><this.MyCart/></Route>
             <Route path="/Profile"><this.MyProfile/></Route>
+            <Route path="/Checkout"><this.Checkout/></Route>
            <Route path="/" exact>
               <this.Home/>
           </Route>

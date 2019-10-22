@@ -1,14 +1,30 @@
 import React,{Component} from 'react';
 import CartCard from './cartCard';
-import  {  Link } from "react-router-dom";
+import  {  Link,Redirect } from "react-router-dom";
 import './cart.css';
-
+let total;
 class Mycart extends Component{
-
+constructor(props){
+    super(props)
+    this.state={
+        checkout : false
+    }
+}
+    checkout=()=>{
+        this.props.checkoutf(this.props.cartitems,total);
+       this.setState({
+           checkout : true
+       })
+        
+    }
     render(){
-        let total;
-        console.log("cart changed")
        
+        console.log("cart changed")
+       if(this.state.checkout){
+           return(
+               <Redirect to= "/Checkout"/>
+           )
+       }
         
         if(this.props.cartitems.length <=0){
             total = 0;
@@ -25,8 +41,13 @@ class Mycart extends Component{
             });
     
         return(
+            <div classNAme="container">
+            <div className="row">
+              <div className="col">
+                1 of 3
+              </div>
+              <div className="col-6 bd">
             
-           <div >
         	{this.props.cartitems.map((data,i)=>{
         	 return	<CartCard key={i} 
                 item={data}
@@ -35,11 +56,18 @@ class Mycart extends Component{
           })
     
             }
-           <h1>Total : {total} </h1> 
-           <button className="btn btn-primary btn-lg" >Checkout</button>
+              </div>
+              <div className="col cart-total">
+              <h1>Total : ₹ {total}/- </h1> 
+           <button className="btn btn-primary btn-lg" onClick={this.checkout.bind(this)}>Checkout</button>
            <Link className="navbar-brand" to="/">  <button className="btn btn-info btn-lg" >Shop More</button> </Link>
         
-       </div>
+              </div>
+            </div>
+            </div>
+          
+          
+    
           
         )
         }
