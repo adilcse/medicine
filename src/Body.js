@@ -149,7 +149,9 @@ Product=()=>{
 }
 MyOrders=()=>{
   return(
-      <Orders/>
+      <Orders
+      user={this.props.user}
+      />
       );
 }
 MyProfile=()=>{

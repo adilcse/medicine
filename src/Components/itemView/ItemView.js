@@ -13,7 +13,7 @@ class ItemView extends Component{
     constructor(props){
         super(props);
         this.state={
-            item:null,
+            item:[],
           id : null,
           itemsincart:0
         }
@@ -31,9 +31,9 @@ class ItemView extends Component{
         const obj=this;
         db.collection("Items").doc(this.state.id).get().then(function(doc) {
             if (doc.exists) {
-               
+               let itm=[doc.data()]
                 obj.setState({
-                    item : doc.data()
+                    item : itm
                 })
             } else {
                 // doc.data() will be undefined in this case
@@ -56,17 +56,18 @@ class ItemView extends Component{
 
     render(){
         console.log(this.props);
-         if(this.state.item )
+        let item = this.state.item[0];
+         if(item)
        { return(       
 <div className="container item">
-    <img src={this.state.item.imageurl} alt={this.state.item.name}/>
-    <ul><li><h1>{this.state.item.name}</h1></li>    
-        <li><h1>Price :  {this.state.item.price} Only </h1>
+    <img src={item.imageurl} alt={item.name}/>
+    <ul><li><h1>{item.name}</h1></li>    
+        <li><h1>Price :  {item.price} Only </h1>
     <p>  with 10% discount </p>
     </li>
     <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,this.state.item.price,"item")}>
         <button className="btn btn-info"> checkout</button></Link></li>
-    <li><button className="btn btn-warning" onClick={()=>this.props.addtocart(this.state.item)}> add to cart</button></li>
+    <li><button className="btn btn-warning" onClick={()=>this.props.addtocart(this.state.item[0])}> add to cart</button></li>
     <li><p>{this.state.item.description}</p></li>
     </ul>
     <span className="pcolor"></span>
