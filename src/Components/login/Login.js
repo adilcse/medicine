@@ -1,5 +1,5 @@
 import React from 'react';
-import './Login.css';
+
 
 function Login({cancel,login,firebase}) {
 let invaliddata ="something went wrong";
@@ -78,7 +78,7 @@ function googlesignin(){
 });
 }
   return (
-    <div className="col-lg-13 login">
+    <div className=" login" align="center">
     <div className="card mb-3  border-secondar">
    
 
@@ -89,16 +89,18 @@ function googlesignin(){
     <div className="col-md-8 bg-light y">
      <h2> Login</h2>
       <div className="card-body">
-        <form>
-  <div className="form-group">
-    <label for="email">Email address</label>
-    <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"></input>
-    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div className="form-group">
-    <label for="password">Password</label>
-    <input type="password" className="form-control " id="password" placeholder="Password"></input>
-  </div>
+  
+  <label for="inp" className="inp">
+  <input type="text" id="email" placeholder="&nbsp;"/>
+  <span className="label">Email</span>
+  <span className="border"></span>
+</label>
+<label for="inp" className="inp">
+  <input type="password" id="password" placeholder="&nbsp;"/>
+  <span className="label">Password</span>
+  <span className="border"></span>
+</label>
+ 
    <div id="nf"></div>
   <button type="button" className="btn btn-primary" onClick={trylogin}>Login</button>
   <button type="button" className="btn btn-primary" onClick={cancel}>Cancel</button>
@@ -112,7 +114,7 @@ function googlesignin(){
   <span class="google-button__text">Sign in with Google</span>
 </button>
 <h2 id="unregistered" hidden>please register yourself first!!!!!</h2>
-</form>
+
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import OrderCard from './OrdersCard';
 import  {  Link } from "react-router-dom";
 import { db } from '../../firebaseconnect';
+import './order.css'
 class Orders extends Component{
     constructor(props){
         super(props)
@@ -64,11 +65,13 @@ class Orders extends Component{
         return (
             <div>
             <h2>Orders</h2>
-            <div className="container">
-            
-             
-             
-           
+            <div className="container-fluid">
+            <div className="row">
+                 <div className="col">
+    
+                  </div>
+                 <div className="col-8">
+                    
             {this.state.orders.map((elements,i)=>{
             let currentDate= elements.data.time.toDate();
             var date = currentDate.getDate();
@@ -76,12 +79,12 @@ class Orders extends Component{
             var year = currentDate.getFullYear();
 
             var dateString = date + "-" +(month + 1) + "-" + year;
-            return <div className="card text-center">
+            return <div className="card text-center order-card">
           <div className="card-header">
               <div className="row">
-            <div className="col-6">{i} Order Id : {elements.id}</div>
+            <div className="col-6">Order Id : {elements.id}</div>
             <div className="col-6">Date : {dateString}</div>
-            {console.log()}
+         
             </div>
           </div>
 
@@ -92,17 +95,27 @@ class Orders extends Component{
                     source = {item}
                     key = {i}
 
+
                   />
                   }
               )
                 }
-         
-           
-            
+         <h3>
+           Total : ₹{elements.data.price}/-<br/>
+           Address : {elements.data.Address.address +" , "+ elements.data.Address.city}
+           </h3>
           </div>
           <div className="card-footer text-muted">
-           Check order Status
+           Status : {elements.data.status}
           </div></div>})}
+                 </div>
+             <div class="col">
+
+                </div>
+            </div>
+             
+             
+           
         	
               </div>
             
