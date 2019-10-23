@@ -3,9 +3,9 @@ import './Login.css';
 
 function Login({cancel,login,firebase}) {
 let invaliddata ="something went wrong";
-
+const db= firebase.firestore();
  function trylogin(event){
-  console.log(firebase);
+  
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
     console.log(email,password);
@@ -47,8 +47,24 @@ function googlesignin(){
   var token = result.credential.accessToken;
   // The signed-in user info.
   var user = result.user;
- console.log(user.email);
- login(user);
+  var docRef = db.collection("LastUser").doc(user.uid);
+
+  docRef.get().then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data());
+          login(user);
+      } else {
+         
+          console.log("user not registered");
+          firebase.auth().signOut();
+          window.alert("please register first")
+         
+      }
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+     
+
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
@@ -95,6 +111,7 @@ function googlesignin(){
   </span>
   <span class="google-button__text">Sign in with Google</span>
 </button>
+<h2 id="unregistered" hidden>please register yourself first!!!!!</h2>
 </form>
       </div>
     </div>
