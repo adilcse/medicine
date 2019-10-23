@@ -77,13 +77,14 @@ class Home extends Component{
         return doc.data();
       }).then(user=>{
        userRef.collection("Cart").orderBy("time", "desc").onSnapshot(function(querySnapshot) {
-        var items = [];
+        var items = new Array();
         querySnapshot.forEach(function(doc) {
             items.push(doc.data());
         });
        obj.setState({
          cartitems:items
        })
+       console.log(items)
     });
       })
       .catch(err => {

@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import './checkout.css';
 import {db,firebase} from '../../firebaseconnect';
 import  {  Link } from "react-router-dom";
+let addressdata="Address updated";
+let addressupdatedclass ="alert alert-success"
 class Checkout extends Component{
     constructor(props){
         super(props)
@@ -19,15 +21,8 @@ class Checkout extends Component{
             user : this.props.user,
             loading : false,
             login : true,
-            name : this.props.user.Address.name,
-           pin :this.props.user.Address.pin,
-           mobile :this.props.user.Address.mobile,
-             locality : this.props.user.Address.locality,
-             address :this.props.user.Address.address,
-            city : this.props.user.Address.city,
-            state :this.props.user.Address.state,
-            landmark : this.props.user.Address.landmark,
-             alternate : this.props.user.Address.alternate,
+            
+        
              price : parseInt(this.props.checkout.price)+40
            }
         }
@@ -37,10 +32,22 @@ class Checkout extends Component{
            
           }
         }
+        this.verifyaddress = this.verifyaddress.bind(this);
       
     }
     updateaddress=()=>{
       let obj=this;
+      if(!this.verifyaddress()){
+        addressupdatedclass = "alert alert-danger";
+
+        this.setState({
+          shipping : true,
+          payment : false,
+          addressupdated : false
+        })
+      }else{
+
+     
       let cartRef=db.collection("LastUser").doc(this.state.user.uid);
     
         cartRef.set({
@@ -50,8 +57,8 @@ class Checkout extends Component{
             mobile :this.state.mobile,
               locality : this.state.locality,
               address :this.state.address,
-             city : this.state.Address.city,
-             state :this.state.Address.state,
+             city : this.state.city,
+             state :this.state.state,
              landmark : this.state.landmark,
               alternate : this.state.alternate,
             
@@ -60,6 +67,8 @@ class Checkout extends Component{
        }, { merge: true })
        .then(function() {
          console.log("Address updated");
+         addressupdatedclass = "alert alert-success";
+         addressdata = "Address updated Successfull";
          obj.setState({
            addressupdated : false
          })
@@ -67,6 +76,7 @@ class Checkout extends Component{
        .catch(function(error) {
          console.error("Error writing document: ", error);
        });
+      }
     }
     handeladdresschange=(add)=>{
         console.log("updates")
@@ -146,23 +156,131 @@ class Checkout extends Component{
 
       }
     } 
+    verifyaddress=()=>{
+        if(this.state.name)
+        {
+          if(this.state.name.length >=3){
+              if(this.state.pin){
+                if(this.state.pin.length === 6){
+                  if(this.state.mobile){
+                    if(this.state.mobile.length === 10){
+                      if(this.state.address){
+                        if(this.state.address.length >=5){
+                          if(this.state.city){
+                            if(this.state.city.length >=3){
+                              if(this.state.state){
+                                if(this.state.state.length >=3){
+                                  if(this.state.alternate){
+                                    if(this.state.alternate.length ===10){
+                                      if(this.state.landmark){
+                                        if(this.state.landmark.length >=3){
+                                          if(this.state.locality){
+                                            if(this.state.locality.length >=3){
+                                              return true;
+                                            }else {
+                                              addressdata = "Please enter correct locality";
+                                              return false;
+                                            }
+                                          }else {
+                                            addressdata = "Please enter locality";
+                                            return false;
+                                          }
+                                        }else {
+                                          addressdata = "Please enter correct landmark";
+                                          return false;
+                                        }
+                                      }else {
+                                        addressdata = "Please enter landmark";
+                                        return false;
+                                      }
+                                    }else {
+                                      addressdata = "Please enter correct altername number";
+                                      return false;
+                                    }
+                                  }else {
+                                    addressdata = "Please enter alternate number";
+                                    return false;
+                                  }
+                                }else {
+                                  addressdata = "Please enter correct state";
+                                  return false;
+                                }
+                              }else {
+                                addressdata = "Please enter state";
+                                return false;
+                              }
+                            }else {
+                              addressdata = "Please enter correct city";
+                              return false;
+                            }
+                          }else {
+                            addressdata = "Please enter city";
+                            return false;
+                          }
+                        }else {
+                          addressdata = "Please enter correct Address";
+                          return false;
+                        }
+                      }else {
+                        addressdata = "Please enter Address";
+                        return false;
+                      }
+                    }else {
+                      addressdata = "Please enter correct Mobile number";
+                      return false;
+                    }
+                  }else {
+                    addressdata = "Please enter Mobile number";
+                    return false;
+                  }
+                }else {
+                  addressdata = "Please enter correct pin code";
+                  return false;
+                }
+              }else {
+                addressdata = "Please enter pin code";
+                return false;
+              }
+          }else{
+            addressdata = "Please enter Correct Name";
+            return false;
+          }
+        }else{
+          addressdata = "Please enter Name";
+          return false;
+        }
+    }
     ship=()=>{
-      this.setState({
+      if(this.verifyaddress()){
+        addressdata = "Address updated";
+        addressupdatedclass = "alert alert-success";
+       this.setState({
         shipAddress :{
           name : this.state.name,
           pin :this.state.pin,
           mobile :this.state.mobile,
             locality : this.state.locality,
             address :this.state.address,
-           city : this.state.Address.city,
-           state :this.state.Address.state,
+           city : this.state.city,
+           state :this.state.state,
            landmark : this.state.landmark,
             alternate : this.state.alternate
 
         },
         shipping : false,
-        payment : true
+        payment : true,
+        addressupdated : false
+      })     
+    }else{
+      addressupdatedclass = "alert alert-danger";
+      this.setState({
+        shipping : true,
+        payment : false,
+        addressupdated : true,
+        addressupdated : false
       })
+      
+    }
     }
    componentDidMount(){
      try{
@@ -178,8 +296,22 @@ class Checkout extends Component{
         Address : this.props.user.Address,
         user : this.props.user,
         loading : false,
-        login : true
+        login : true,
+
       })
+      if(this.props.user.Address){
+        this.setState({
+          name : this.props.user.Address.name,
+          pin :this.props.user.Address.pin,
+          mobile :this.props.user.Address.mobile,
+            locality : this.props.user.Address.locality,
+            address :this.props.user.Address.address,
+           city : this.props.user.Address.city,
+           state :this.props.user.Address.state,
+           landmark : this.props.user.Address.landmark,
+            alternate : this.props.user.Address.alternate
+        })
+      }
      }catch(e){
        console.log(e);
      }
@@ -253,7 +385,7 @@ class Checkout extends Component{
         if(!this.state.login){
           return(<h2>Please login first</h2>)
       }
-        console.log("called",this.state)
+        console.log("called",this.state,{addressdata})
       }catch(e){
         return(<h2>Something went wrong..</h2>)
       }
@@ -335,8 +467,8 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
    
    </div>
    
-   <div className="row" id="carderror" className="alert alert-success" role="alert" hidden={this.state.addressupdated}>
-        Address Updated
+   <div className="row" id="carderror" className={addressupdatedclass} role="alert" hidden={this.state.addressupdated}>
+       {addressdata}
        </div>
   
    </form>
@@ -366,7 +498,7 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
      <div classNAme="container md-form">
      <h2 align = "left">Payment</h2>
     
-        Pay via card
+       <h1>Pay via card</h1> 
 
        <div className="row">
        <input type="text"  className="form-control" id="cardno" placeholder="Enter Card Number" maxLength="16"></input></div>
@@ -388,7 +520,7 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
        </div>
        <div align = "center">
          <h1>OR</h1>
-         <button className="btnn " onClick={this.COD}>Cash On Delevery</button>
+         <button className="btn btn-primary btn-lg " onClick={this.COD}>Cash On Delevery</button>
        </div>
        </div>
        if(this.state.orderplaced){
