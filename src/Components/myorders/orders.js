@@ -55,7 +55,7 @@ class Orders extends Component{
               
     }
     render(){
-        console.log(this.state.orders)
+      
         if(this.state.orders.length=== 0 ){
             return(
                 <h1>Nothing Ordered Yet...</h1>
