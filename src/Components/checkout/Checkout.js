@@ -326,6 +326,7 @@ class Checkout extends Component{
   Address:obj.state.shipAddress,
   paymentmethod : order,
    time : firebase.firestore.FieldValue.serverTimestamp(),
+   status : "pending"
   
   
 }, { merge: true })

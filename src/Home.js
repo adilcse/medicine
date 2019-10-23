@@ -55,7 +55,9 @@ class Home extends Component{
         if (!doc.exists) {
           console.log('user not exist');
            obj.setState({
-        isAdmin:false
+        isAdmin:false,
+        signinopen:false,
+        registeropen:true
        });
         } else {
           let userdetails = doc.data();

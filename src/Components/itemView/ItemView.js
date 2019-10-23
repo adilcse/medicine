@@ -18,6 +18,7 @@ class ItemView extends Component{
           itemsincart:0
         }
         this.fetchItem=this.fetchItem.bind(this);
+        this.addtocart=this.addtocart.bind(this);
       
       console.log(this.props)
     }
@@ -52,26 +53,32 @@ class ItemView extends Component{
     componentDidMount(){
         this.fetchItem();
     }
-
+    addtocart=()=>{
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        this.props.addtocart(this.state.item[0]);
+    }
 
     render(){
-        console.log(this.props);
+     
         let item = this.state.item[0];
+       
          if(item)
        { return(       
-<div className="container item">
+<div className="container-fluid item">
     <img src={item.imageurl} alt={item.name}/>
     <ul><li><h1>{item.name}</h1></li>    
         <li><h1>Price :  {item.price} Only </h1>
     <p>  with 10% discount </p>
     </li>
-    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,this.state.item.price,"item")}>
+    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
         <button className="btn btn-info"> checkout</button></Link></li>
-    <li><button className="btn btn-warning" onClick={()=>this.props.addtocart(this.state.item[0])}> add to cart</button></li>
+    <li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
     <li><p>{this.state.item.description}</p></li>
     </ul>
-    <span className="pcolor"></span>
-    <span className="pcolor"></span>
+    <div id="snackbar">Item Added to Cart</div>
+        
     </div>
   
         )}
