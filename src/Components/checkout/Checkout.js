@@ -543,7 +543,7 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
             <Link to="/" className="btn btn-primary">Shop Now</Link>
           </div>
           <div className="card-footer text-muted">
-           Check order Status
+          <Link to="/Myorders"> Check order Status</Link>
           </div></div>
         </div>
         </div></div>

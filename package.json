@@ -18,7 +18,8 @@
     "react-scripts": "3.0.1",
     "reactjs-popup": "^1.4.2",
     "redux": "^4.0.4",
-    "semantic-ui-react": "^0.87.3"
+    "semantic-ui-react": "^0.87.3",
+    "yarn": "^1.19.1"
   },
   "exclude": [
     "node_modules"
@@ -55,6 +56,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/adilcse/medicine/issues"
-  },
-  "homepage": "https://github.com/adilcse/medicine#readme"
+  }
+  
 }
