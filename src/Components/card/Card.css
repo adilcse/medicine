@@ -15,9 +15,9 @@ overflow: hidden;
 .card-img{
 	max-width: 300px;
 	align-items :center;
-	width: 100px;
-    padding-top:25px;
-	height: 150px;
+	width: 190px;
+    padding:10px 0px 10px 0px;
+	height:200px;
 
 }
 .bd{
@@ -51,15 +51,18 @@ overflow: hidden;
 	font-family: 'fantasia';
 }
 .zoom:hover {
-	-ms-transform: scale(1.3); /* IE 9 */
-	-webkit-transform: scale(1.3); /* Safari 3-8 */
-	transform: scale(1.3); 
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari 3-8 */
+	transform: scale(1.2); 
   }
   .shadow{
 	box-shadow: 4px 4px 5px 0 gray;
 	height: 38 0px;
 	width: 350px;
+	background-color: #ffffff;
   }
   .crd{
 	  border:  none;
+	  margin :0px;
+	  padding:  0px;
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Card as Cardboot ,Button} from 'react-bootstrap';
 import './Card.css';
 import {Link} from 'react-router-dom';
+
 class Card extends React.Component{
   
    tocart=()=>{
@@ -17,9 +18,9 @@ return(
 
 
 <div className="shadow">
-
-<Cardboot style={{ width: '18rem' }} >
-<Link to={`/Product/${source.item_id}`}> <Cardboot.Img variant="top" src={source.imageurl} className="card-img zoom" /></Link>
+<Cardboot  className="crd" >
+<Link to={`/Product/${source.item_id}`}><Cardboot.Img variant="top" src={source.imageurl} className="card-img zoom" />
+</Link>
   <Cardboot.Body>
     <Cardboot.Title><Link to={`/Product/${source.item_id}`}><div className="title">{source.name}</div></Link></Cardboot.Title>
     <Cardboot.Text>
@@ -33,6 +34,7 @@ return(
   <div id="snackbar">Item Added to Cart</div>
 </Cardboot>
   </div>
-);}
-}
+);
+
+}}
 export default Card;

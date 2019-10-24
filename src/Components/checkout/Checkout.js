@@ -404,7 +404,7 @@ class Checkout extends Component{
      const Shipping =        <div className="col-5"  >
      <h2 align = "left">Shipping address</h2>
    
-     <div align="center" classNAme="container md-form">
+     <div align="center" className="container md-form">
      <form>
 <div className="row">
 <div className="col-6">

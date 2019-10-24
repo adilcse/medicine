@@ -10,8 +10,7 @@ import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
-let lastsnapshot=null;
-const MAX=6;
+const MAX=12;
 class Body extends Component{
 constructor(props){
 super(props)
@@ -75,7 +74,7 @@ fetchitems=()=>{
 LoadMore=()=>{
  if(this.state.loaded<=this.state.source.length)
 return(
-  <div>
+ <center> <div>
    
    
     <button className="btn-body" onClick={()=>{
@@ -83,6 +82,7 @@ return(
     }}>More....</button>
 
   </div>
+  </center>
 )
 else{
   return(
@@ -174,7 +174,7 @@ render(){
 
  
 return(
-  <div className="">
+  <div className="main-body bk">
     <Switch>
    
           <Route path="/addItems">

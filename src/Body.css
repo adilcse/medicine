@@ -54,5 +54,6 @@
 }
 .main-body{
 	margin-top: 50px;
-	background: rgb(105, 187, 72);
+	/* background: linear-gradient(to bottom,#ffffff 0%, #00cc66 66%); */
+	background: linear-gradient(to bottom right, #66ffff 0%, #000000 100%);
 }
