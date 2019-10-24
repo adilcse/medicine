@@ -110,6 +110,8 @@ Home=()=>{
         	{this.state.source.map((data,i)=>{
         	 return	<Card key={i} 
                 source={data}
+                checkoutf={this.props.checkoutf}
+                addtocart={this.props.addtocart}
         		/>
           })
     
@@ -171,7 +173,7 @@ render(){
 
  
 return(
-
+  <div className="">
     <Switch>
    
           <Route path="/addItems">
@@ -186,7 +188,7 @@ return(
               <this.Home/>
           </Route>
       </Switch>
-   
+      </div>
 )
   
 
