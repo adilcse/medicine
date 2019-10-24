@@ -7,3 +7,7 @@ overflow: hidden;
 .cart-total{
     margin-top: 60px;
 }
+.ct{
+	border-color: transparent;
+	max-width: 25px;
+}

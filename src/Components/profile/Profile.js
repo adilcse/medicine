@@ -293,9 +293,9 @@ default :
         }
         let {name,address,locality,mobile,alternate,city,state,pin,landmark}=this.state;
         return (
-        	<div className="container">
+        	<div className="container ">
         	<div>
-        	<img className="img-profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6lqu6IZWoJJrNGqKn6Bhaywmq_7M_6eyoJNGLg8yajoUEGqbY&s" alt="image"/>
+        	<img className="im" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6lqu6IZWoJJrNGqKn6Bhaywmq_7M_6eyoJNGLg8yajoUEGqbY&s" alt="image"/>
         	</div>
             <div className="row profile-email" align="center">
                 <div className="col"/>
@@ -318,32 +318,6 @@ onChange={()=>this.handeladdresschange("name")}
 
 Pin :<input type="text"  className="form-control" id="pin" placeholder="Enter Pin Code" value={pin} readOnly={!this.state.edit}  onChange={()=>this.handeladdresschange("pin")}/>
 
-
-
-
-
-   </div>
-   <div className="col-6">
- 
-Mob No :<input type="text" className="form-control" id="Mobileno" placeholder="Enter Mobile number" readOnly={!this.state.edit} value={mobile}   onChange={()=>this.handeladdresschange("mobile")}/>
-
-Locality :<input type="text"  className="form-control" id="locality" placeholder="Enter Locality" readOnly={!this.state.edit} value={locality}   onChange={()=>this.handeladdresschange("locality")}/>
-
-   
-
-   </div>
-   <div className="row">
-   <div className="col profile-address">
-    Address :<textarea   className="form-control " id="address" placeholder="Enter Address" value={address} readOnly={!this.state.edit}
- 
-  onChange={()=>this.handeladdresschange("address")}/>
-        </div>
-
-       </div>
-       <div className="row">
-<div className="col-6">
-
-
 City : <input type="text"  className="form-control" readOnly={!this.state.edit} id="city" placeholder="Enter City" value={city}   onChange={()=>this.handeladdresschange("city")}/>
 
 
@@ -355,16 +329,29 @@ State :<input type="text"  className="form-control" readOnly={!this.state.edit} 
 
    </div>
    <div className="col-6">
-  
-Landmark: <input type="text" className="form-control" readOnly={!this.state.edit} id="landmark" placeholder="Enter Landmark" value={landmark}   onChange={()=>this.handeladdresschange("landmark")}/>
+ 
+Mob No :<input type="text" className="form-control" id="Mobileno" placeholder="Enter Mobile number" readOnly={!this.state.edit} value={mobile}   onChange={()=>this.handeladdresschange("mobile")}/>
+
+Locality :<input type="text"  className="form-control" id="locality" placeholder="Enter Locality" readOnly={!this.state.edit} value={locality}   onChange={()=>this.handeladdresschange("locality")}/>
+
+   Landmark: <input type="text" className="form-control" readOnly={!this.state.edit} id="landmark" placeholder="Enter Landmark" value={landmark}   onChange={()=>this.handeladdresschange("landmark")}/>
 
 
 Alternate no:<input type="text"  className="form-control" readOnly={!this.state.edit} id="alternate" placeholder="Alternate number" value={alternate}   onChange={()=>this.handeladdresschange("alternate")}/>
 
-   
-</div> </div>
 
-<div className="row profile-row" >
+   </div>
+ 
+   <div className="row profile-center-element">
+   <div className="col profile-address">
+    Address :<textarea   className="form-control " id="address" placeholder="Enter Address" value={address} readOnly={!this.state.edit}
+ 
+  onChange={()=>this.handeladdresschange("address")}/>
+        </div>
+
+       </div>
+
+<div className="row " >
 <div className="col"/>
 <div className="col-6">
 <div className="" id="carderror" className={addressupdatedclass} role="alert" hidden={this.state.addressupdated}>

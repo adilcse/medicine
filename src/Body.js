@@ -86,7 +86,7 @@ return(
 )
 else{
   return(
-    <h1>Sorry!no more content...☹️</h1>
+    <h1 >Sorry!no more content...☹️</h1>
   )
 }
   
