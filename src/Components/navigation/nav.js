@@ -8,10 +8,7 @@ import Register from '../register/Register';
 import  {  Link } from "react-router-dom";
 
 class Nav extends Component{
-	constructor(props){
-		super(props);
-		
-}
+	
 
 	render(){
 		

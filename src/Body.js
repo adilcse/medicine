@@ -1,18 +1,16 @@
 import React,{Component} from 'react';
-import _ from 'lodash';
 import Card from './Components/card/Card';
 import './Body.css';
 import AddItems from './Components/addItem/addItems';
 import {db} from './firebaseconnect';
 import ItemView from './Components/itemView/ItemView';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {Switch,Route} from 'react-router-dom';
 import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
-let lastsnapshot=null;
-const MAX=5;
+const MAX=12;
 class Body extends Component{
 constructor(props){
 super(props)

@@ -23,3 +23,9 @@ overflow: hidden;
 .bd{
 	background-color: rgba(82, 242, 101,.3);
 }
+.cardprice{
+	font-size:  150%;
+	font-family: 'Times New Roman', Times, serif,italic;
+    color:rgb(148, 67, 67);
+	
+}
