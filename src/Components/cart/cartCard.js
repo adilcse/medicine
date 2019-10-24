@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import  {  Link } from "react-router-dom";
 import './cart.css';
 import {db,firebase} from '../../firebaseconnect';
-let user,obj;
+let user;
 
 class CartCard extends Component{
     constructor(props){
@@ -10,7 +10,7 @@ class CartCard extends Component{
         this.additem = this.additem.bind(this);
         this.removeitem = this.removeitem.bind(this);
         user = this.props.user;
-        obj=this;
+       
     }
     additem=()=>{
        let cartRef=db.collection("LastUser").doc(user.uid).collection("Cart");

@@ -25,15 +25,21 @@ this.setState({ value: result.title,
 });
 this.props.searchchanged(result.item_id)
   }
+  tocamelCase=(str)=>{
+    return str.charAt(0).toUpperCase() + str.toLowerCase().slice(1); 
+
+  }
   handleSearchChange = (e, { value }) => {
+    console.log(this.tocamelCase(value))
     const obj = this;
    let res=[];
     this.setState({ isLoading: true, value })
-    if(this.state.value.length >=1){
-      let search = this.state.value;
+    if(this.state.value.length !==0){
+      let search = value;
       const colRef = db.collection('Items');
      
-      colRef.where('name', '>=', search).where('name', '<=', search+ '\uf8ff')
+    
+      colRef.where('name', '>=', this.tocamelCase(search)).where('name', '<=', search+ '\uf8ff')
       .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -44,8 +50,9 @@ this.props.searchchanged(result.item_id)
             ares.image = doc.data().imageurl;
             ares.item_id=doc.data().item_id;
             ares.price = "Rs. " + doc.data().price;
-
-          res.push(ares);
+           
+          if(ares.title.charAt(0)+ares.title.charAt(1) === search.charAt(0).toUpperCase()+search.charAt(1).toLowerCase())
+               res.push(ares);
         });
        
         obj.setState({ isLoading: false })
@@ -77,20 +84,27 @@ this.props.searchchanged(result.item_id)
       window.location = window.location.origin.toString()+`/Product/${redirecturl}`;
      
       
+     
       
     }
+    {let x = document.getElementsByClassName("eight")[0];
+    let att = document.createAttribute("class");       // Create a "class" attribute
+    att.value = "wide column ";   
+    if(x)
+    x.setAttributeNode(att);  
+  }
     return (
        <Grid >
         <Grid.Column width={8}>
           <Search
             fluid={true}
-           
+          
              input={{ icon: 'search', iconPosition: 'left' }}
              size = "large"
              aligned="left"
             loading={isLoading}
             onResultSelect={this.handleResultSelect}
-            onSearchChange={_.debounce(this.handleSearchChange, 10, {
+            onSearchChange={_.debounce(this.handleSearchChange, 100, {
               leading: true,
             })}
             results={results}
@@ -103,5 +117,6 @@ this.props.searchchanged(result.item_id)
         </Grid>
      
     )
+  
   }
 }

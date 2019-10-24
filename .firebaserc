@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "med-life",
+    "staginig": "med-life"
+  }
+}

@@ -15,12 +15,54 @@ overflow: hidden;
 .card-img{
 	max-width: 300px;
 	align-items :center;
-	width: 100px;
-
-	height: 150px;
+	width: 190px;
+    padding:10px 0px 10px 0px;
+	height:200px;
 
 }
 .bd{
-	background-color: white;
-	filter: drop-shadow(-4px 4px 5px);
+	background-color: rgba(82, 242, 101,.3);
 }
+
+.cardprice{
+	font-size:  150%;
+	font-family: 'Times New Roman', Times, serif,italic;
+    color:rgb(148, 67, 67);
+	
+}
+
+
+
+.slick-slide {
+    padding: 0 1.438rem;
+    cursor: pointer;
+}
+
+
+.ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+  }
+  small{
+	  opacity: 0.5;
+  }
+.title{
+	font-family: 'fantasia';
+}
+.zoom:hover {
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari 3-8 */
+	transform: scale(1.2); 
+  }
+  .shadow{
+	box-shadow: 4px 4px 5px 0 gray;
+	height: 38 0px;
+	width: 350px;
+	background-color: #ffffff;
+  }
+  .crd{
+	  border:  none;
+	  margin :10px;
+	  padding:  10px;
+  }

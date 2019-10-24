@@ -201,7 +201,7 @@ return(
   isAdmin={this.state.isAdmin}
   searchchanged={this.searchchanged}
   cartitems={this.state.cartitems}
-  user = {this.state.user}
+
   />
 
     <Body

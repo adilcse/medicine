@@ -10,11 +10,13 @@
 	transition: 0.3s;
 	position: relative;
 	top :10px
+    
   }
   
 .btn-body:hover {opacity: 0.8}
 
-.container{
+.home-container{
+	padding-top: 5rem;
 	display:grid;
 	grid-gap: 30px;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -51,4 +53,14 @@
 	color: white;
 	top: calc(50%);
 	left: calc(50%);
+	transform: translateY(400px);
+
+}
+.main-body{
+	margin-top: 50px;
+	/* background: linear-gradient(to bottom,#ffffff 0%, #00cc66 66%); */
+	background: linear-gradient(to bottom right, #66ffff 0%, #000000 100%);
+}
+.body-home{
+	margin-top: 100px;
 }
