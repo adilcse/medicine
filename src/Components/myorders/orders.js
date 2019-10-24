@@ -87,7 +87,7 @@ class Orders extends Component{
             </div>
           </div>
 
-          <div className="card-body">
+          <div className="card-body-order">
               {
                   elements.data.items.map((item,i)=>{
                     return <OrderCard

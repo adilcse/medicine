@@ -15,7 +15,7 @@
   
 .btn-body:hover {opacity: 0.8}
 
-.container{
+.home-container{
 	display:grid;
 	grid-gap: 30px;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -53,6 +53,6 @@
 
 }
 .main-body{
-	margin-top: 50px;
+	margin-top: 100px;
 	background: rgb(255, 255, 255);
 }

@@ -153,6 +153,7 @@ class Checkout extends Component{
                                            
                                           })
                                           break;           
+default :
 
       }
     } 
@@ -383,7 +384,7 @@ class Checkout extends Component{
         if(this.state.loading){
             return(<h1>Loading</h1>)
         }
-        if(!this.state.login){
+        if(!this.state.login){  
           return(<h2>Please login first</h2>)
       }
         console.log("called",this.state,{addressdata})
@@ -404,7 +405,7 @@ class Checkout extends Component{
      const Shipping =        <div className="col-5"  >
      <h2 align = "left">Shipping address</h2>
    
-     <div align="center" className="container md-form">
+     <div align="center" className="container-fluid md-form">
      <form>
 <div className="row">
 <div className="col-6">

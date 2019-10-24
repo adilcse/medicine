@@ -84,14 +84,21 @@ this.props.searchchanged(result.item_id)
       window.location = window.location.origin.toString()+`/Product/${redirecturl}`;
      
       
+     
       
     }
+    {let x = document.getElementsByClassName("eight")[0];
+    let att = document.createAttribute("class");       // Create a "class" attribute
+    att.value = "wide column ";   
+    if(x)
+    x.setAttributeNode(att);  
+  }
     return (
        <Grid >
         <Grid.Column width={8}>
           <Search
             fluid={true}
-           
+          
              input={{ icon: 'search', iconPosition: 'left' }}
              size = "large"
              aligned="left"
@@ -110,5 +117,6 @@ this.props.searchchanged(result.item_id)
         </Grid>
      
     )
+  
   }
 }
