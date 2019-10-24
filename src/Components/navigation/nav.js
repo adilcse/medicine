@@ -45,7 +45,7 @@ class Nav extends Component{
 	    		button = <li className="nav-item btn-group active " align="right"   >
 				
          <Link className="nav-link"   to="/" onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
-         <Link className="nav-link" to="/Profile"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
+         <Link className="nav-link" to="/Profile"> Profile {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
           <Link className="nav-link " to="/addItems"> Add Items  <Icon name='add' size='large' /> </Link>
 		  <Link className="nav-link " to="/Mycart">Cart <Icon name='cart' size='large' /> {this.props.cartitems.length}</Link>
 		 
@@ -53,14 +53,14 @@ class Nav extends Component{
 	    }else{
 	    	button = <li className="nav-item btn-group active " align="right"   >
          <Link className="nav-link"   to='/' onClick={this.props.signout}>Signout <Icon name='sign-out' size='large' /> </Link>
-         <Link className="nav-link" to="/Profile"> Welcome {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
+         <Link className="nav-link" to="/Profile"> Profile {this.props.user.displayName} <Icon name='user' size='large' /> </Link>
 		 <Link className="nav-link " to="/Mycart">Cart <Icon name='cart' size='large' /> {this.props.cartitems.length}</Link>
       </li>;
 	    }
 		return(
 		<div align="center">
 		<nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" align="left">
-  <Link className="navbar-brand" to="/"> <Icon name='leaf' size='large' /> MedLife </Link>
+  <Link className="navbar-brand" to="/"> <img className="logo"  src="https://firebasestorage.googleapis.com/v0/b/med-life.appspot.com/o/items%2Fimages%2Flogo%20copy.jpg?alt=media&token=0eb3cd28-9eae-4345-93c1-18bdc6faab02"  /> Revive </Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
