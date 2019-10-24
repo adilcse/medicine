@@ -21,5 +21,6 @@ overflow: hidden;
 
 }
 .bd{
-	background-color: rgba(82, 242, 101,.3);
+	background-color: white;
+	filter: drop-shadow(-4px 4px 5px);
 }

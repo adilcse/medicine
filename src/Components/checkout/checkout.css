@@ -13,3 +13,9 @@
     margin-top: 100px;
     padding: 50px;
 }
+.load{
+	transform: translateY(400px);
+}
+.container{
+	justify-content: center;
+}
