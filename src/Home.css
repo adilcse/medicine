@@ -2,10 +2,21 @@
 	width: 250px; 
 
 } 
-.iconbg{
-	background-color: "white";
-}
+
 
 .home{
 	margin-top: 0px;
+}
+
+.bk{
+	background-image: url("");
+	height: auto;
+	min-height: 3165px;
+	width: 100%;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background: radial-gradient(to bottom right,#ffffff 0%, #00cc66 66%);
+
 }

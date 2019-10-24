@@ -1,18 +1,16 @@
 import React,{Component} from 'react';
-import _ from 'lodash';
 import Card from './Components/card/Card';
 import './Body.css';
 import AddItems from './Components/addItem/addItems';
 import {db} from './firebaseconnect';
 import ItemView from './Components/itemView/ItemView';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {Switch,Route} from 'react-router-dom';
 import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
-let lastsnapshot=null;
-const MAX=5;
+const MAX=12;
 class Body extends Component{
 constructor(props){
 super(props)
@@ -76,14 +74,15 @@ fetchitems=()=>{
 LoadMore=()=>{
  if(this.state.loaded<=this.state.source.length)
 return(
-  <div>
+ <center> <div>
    
    
     <button className="btn-body" onClick={()=>{
-     this.setState({loadmax : this.state.loadmax+MAX})
+     this.setState({loadmax :this.state.loadmax+MAX})
     }}>More....</button>
 
   </div>
+  </center>
 )
 else{
   return(
@@ -108,10 +107,13 @@ Home=()=>{
   else{
     load=<h1>Loading</h1>
   }
-	return(<div className=" home container">
+	return(<div className="  container home-container">
         	{this.state.source.map((data,i)=>{
         	 return	<Card key={i} 
                 source={data}
+                checkoutf={this.props.checkoutf}
+                addtocart={this.props.addtocart}
+                user={this.props.user}
         		/>
           })
     
@@ -156,7 +158,9 @@ MyOrders=()=>{
 }
 MyProfile=()=>{
   return(
-      <Profile/>
+      <Profile
+      user={this.props.user}
+      />
       );
 }
 Checkout=()=>{
@@ -173,7 +177,7 @@ render(){
 
  
 return(
-
+  <div className="main-body bk">
     <Switch>
    
           <Route path="/addItems">
@@ -188,7 +192,7 @@ return(
               <this.Home/>
           </Route>
       </Switch>
-   
+      </div>
 )
   
 

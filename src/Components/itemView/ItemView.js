@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './itemview.css'
 import {db} from '../../firebaseconnect';
-import  { Switch,  Link ,Route} from "react-router-dom";
-import Checkout from "../checkout/Checkout";
+import  {   Link } from "react-router-dom";
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "http://img1a.flixcart.com/www/linchpin/fk-cp-zion/css/app.chunk.0cf296.css";

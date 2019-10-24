@@ -3,12 +3,11 @@ import './Register.css';
 import { db } from '../../firebaseconnect';
 
 function Register({cancel,register,firebase}) {
-  const db=firebase.firestore();
   function googlesignin(){
   var provider = new firebase.auth.GoogleAuthProvider();
  firebase.auth().signInWithPopup(provider).then(function(result) {
   // This gives you a Google Access Token. You can use it to access the Google API.
-  var token = result.credential.accessToken;
+
   // The signed-in user info.
   var user = result.user;
  console.log(user);
@@ -29,11 +28,7 @@ function Register({cancel,register,firebase}) {
   // Handle Errors here.
   var errorCode = error.code;
    console.log(errorCode);
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
+  
   // ...
 });
 }
@@ -73,7 +68,7 @@ user.user.updateProfile({
   // Handle Errors here.
   var errorCode = error.code;
 
-  var errorMessage = error.message;
+  
     console.log(errorCode);
     switch(errorCode){
       case "auth/invalid-email" :  
@@ -102,9 +97,9 @@ user.user.updateProfile({
   invaliddata = "pasword not matched";
 }
 console.log(invaliddata);
-if(invaliddata!="none")
+if(invaliddata!=="none")
  {let place=document.getElementById("nf");
-    place.setAttribute("class", "alert alert-danger");
+    place.setAttribute("className", "alert alert-danger");
     place.setAttribute("role", "alert");
     place.innerHTML=invaliddata;}
 

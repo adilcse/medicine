@@ -1,6 +1,15 @@
-.order-card{
+.card-body-order{
     margin: 50px;
 }
 .mb-5{
     margin:5px;
+}
+.order-img{
+width : 8rem;
+height : 10rem;
+margin  : 0px;
+padding : 0px;
+}
+.order-row{
+    max-height: 150px;
 }

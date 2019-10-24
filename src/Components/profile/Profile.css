@@ -1,0 +1,32 @@
+
+input[type=Button]{
+	margin-top: 4px;
+}
+.img-profile{
+	margin-top: 0px;
+	height: 150px;
+	width: 150px;
+	border-radius: 100px;
+	border-color: 2px solid white;
+}
+.profile-center-element{
+	padding: 1rem 10rem 1rem 10rem;
+}
+.profile-row{
+	align-content: center;
+}
+.btn-warning{
+	color: white;
+}
+.profile-address{
+	padding-left: 110px;
+    padding-right: 110px;
+}
+.profile-email{
+	
+	font-size: 2rem;
+	font-family: 'Times New Roman', Times, serif;
+
+	
+
+}

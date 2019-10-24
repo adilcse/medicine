@@ -186,8 +186,8 @@ checkout=(items,price,via)=>{
 render(){
 
 return(
-  <Router>
-  <div>
+  <Router >
+  <div className="bk">
   <Nav signinstatus={this.state.signedin}
   signinopen={this.state.signinopen}
   registeropen={this.state.registeropen} 
@@ -201,10 +201,10 @@ return(
   isAdmin={this.state.isAdmin}
   searchchanged={this.searchchanged}
   cartitems={this.state.cartitems}
-  user = {this.state.user}
+
   />
 
-    <Body 
+    <Body
      isAdmin={this.state.isAdmin}
      addtocart={this.addtocart}
      cartitems={this.state.cartitems}

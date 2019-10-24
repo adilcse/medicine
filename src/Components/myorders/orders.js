@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import OrderCard from './OrdersCard';
-import  {  Link } from "react-router-dom";
 import { db } from '../../firebaseconnect';
 import './order.css'
 class Orders extends Component{
@@ -88,7 +87,7 @@ class Orders extends Component{
             </div>
           </div>
 
-          <div className="card-body">
+          <div className="card-body-order">
               {
                   elements.data.items.map((item,i)=>{
                     return <OrderCard

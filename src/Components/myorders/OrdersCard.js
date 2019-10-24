@@ -18,9 +18,9 @@ render(){
   }
   
     return(
-              <div className="card mb-5" >
+              <div className="card mb-5 " >
                
-  <div className="row no-gutters">
+  <div className="row order-row">
    
     <div className="col-md-4">
       <img src={source.imageurl} className="card-img order-img" alt={source.name}/>
