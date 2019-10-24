@@ -23,3 +23,27 @@ overflow: hidden;
 .bd{
 	background-color: rgba(82, 242, 101,.3);
 }
+
+
+.slick-slide {
+    padding: 0 1.438rem;
+    cursor: pointer;
+}
+
+
+.ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+  }
+  small{
+	  opacity: 0.5;
+  }
+.title{
+	font-family: 'fantasia';
+}
+.zoom:hover {
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari 3-8 */
+	transform: scale(1.2); 
+  }
