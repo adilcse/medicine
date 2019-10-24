@@ -76,7 +76,7 @@ fetchitems=()=>{
 LoadMore=()=>{
  if(this.state.loaded<=this.state.source.length)
 return(
-  <div>
+ <center> <div>
    
    
     <button className="btn-body" onClick={()=>{
@@ -84,6 +84,7 @@ return(
     }}>More....</button>
 
   </div>
+  </center>
 )
 else{
   return(
