@@ -10,6 +10,7 @@
 	transition: 0.3s;
 	position: relative;
 	top :10px
+    
   }
   
 .btn-body:hover {opacity: 0.8}
