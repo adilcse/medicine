@@ -12,7 +12,7 @@ import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
 let lastsnapshot=null;
-const MAX=5;
+const MAX=6;
 class Body extends Component{
 constructor(props){
 super(props)

@@ -6,8 +6,8 @@ function Card({source}){
 return(
 
 
-
-<Cardboot style={{ width: '18rem' }} >
+<div className="shadow">
+<Cardboot style={{ width: '18rem' }} className="crd" >
   <Cardboot.Img variant="top" src={source.imageurl} className="card-img zoom" />
   <Cardboot.Body>
     <Cardboot.Title><div className="title">{source.name}</div></Cardboot.Title>
@@ -18,7 +18,7 @@ return(
     <Button variant="primary">Add to Cart</Button> 
   </Cardboot.Body>
 </Cardboot>
-  
+  </div>
 );
 }
 export default Card;
