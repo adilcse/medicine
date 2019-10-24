@@ -107,12 +107,13 @@ Home=()=>{
   else{
     load=<h1>Loading</h1>
   }
-	return(<div className=" home container">
+	return(<div className="  container home-container">
         	{this.state.source.map((data,i)=>{
         	 return	<Card key={i} 
                 source={data}
                 checkoutf={this.props.checkoutf}
                 addtocart={this.props.addtocart}
+                user={this.props.user}
         		/>
           })
     
@@ -157,7 +158,9 @@ MyOrders=()=>{
 }
 MyProfile=()=>{
   return(
-      <Profile/>
+      <Profile
+      user={this.props.user}
+      />
       );
 }
 Checkout=()=>{

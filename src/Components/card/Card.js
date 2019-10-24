@@ -6,19 +6,30 @@ import {Link} from 'react-router-dom';
 class Card extends React.Component{
   
    tocart=()=>{
+    var x = document.getElementById("snackbar");
+     if(this.props.user){
+
+     
     const source= this.props.source;
-      var x = document.getElementById("snackbar");
+     
+    x.innerHTML="item added to Cart"
       x.className = "show";
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       this.props.addtocart(source);
+  }else{
+    x.innerHTML="please login first"
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
   }
+}
   render(){
     const source= this.props.source;
 return(
 
 
-<div className="shadow">
-<Cardboot  className="crd" >
+
+<Cardboot  className="crd shadow" >
 <Link to={`/Product/${source.item_id}`}><Cardboot.Img variant="top" src={source.imageurl} className="card-img zoom" />
 </Link>
   <Cardboot.Body>
@@ -33,7 +44,7 @@ return(
   </Cardboot.Body>
   <div id="snackbar">Item Added to Cart</div>
 </Cardboot>
-  </div>
+ 
 );
 
 }}
