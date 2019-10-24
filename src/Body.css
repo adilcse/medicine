@@ -49,4 +49,9 @@
 }
 .load{
 	transform: translateY(400px);
+
+}
+.main-body{
+	margin-top: 50px;
+	background: rgb(105, 187, 72);
 }

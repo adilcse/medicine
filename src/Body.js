@@ -173,7 +173,7 @@ render(){
 
  
 return(
-  <div className="">
+  <div className="main-body">
     <Switch>
    
           <Route path="/addItems">
