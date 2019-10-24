@@ -245,7 +245,7 @@ default :
     componentDidMount(){
         console.log("mounted",this.props.user);
         if(this.props.user){
-           
+           if(this.props.user.Address)
             this.setState({
                 edit : false,
               name : this.props.user.Address.name,
