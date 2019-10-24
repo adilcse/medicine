@@ -50,4 +50,9 @@
 }
 .load{
 	transform: translateY(400px);
+
+}
+.main-body{
+	margin-top: 50px;
+	background: rgb(255, 255, 255);
 }

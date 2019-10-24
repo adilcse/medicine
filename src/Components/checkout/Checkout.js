@@ -404,7 +404,7 @@ class Checkout extends Component{
      const Shipping =        <div className="col-5"  >
      <h2 align = "left">Shipping address</h2>
    
-     <div classNAme="container md-form">
+     <div align="center" className="container md-form">
      <form>
 <div className="row">
 <div className="col-6">
@@ -475,7 +475,7 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
    </form>
    <button  className="btn btn-primary" onClick={this.updateaddress}>Update</button>
    <button className="btn btn-success" onClick={this.ship}>Continue</button>
-   <button className="btn btn-warning"><Link to="/">Cancel</Link></button>
+   <button className="btn btn-outline-danger"><Link to="/">Cancel</Link></button>
    </div>
   
  </div>
@@ -543,7 +543,7 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
             <Link to="/" className="btn btn-primary">Shop Now</Link>
           </div>
           <div className="card-footer text-muted">
-           Check order Status
+          <Link to="/Myorders"> Check order Status</Link>
           </div></div>
         </div>
         </div></div>
@@ -578,7 +578,12 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
         </div>
        )
      else{
-       return(<h2>Loading</h2>)
+
+       return(
+       <div className="load">
+        <span className="spinner-grow spinner-grow-sm" role="status"></span>
+       <h2>Loading</h2>
+       </div>)
      }   
        
     }

@@ -1,18 +1,16 @@
 import React,{Component} from 'react';
-import _ from 'lodash';
 import Card from './Components/card/Card';
 import './Body.css';
 import AddItems from './Components/addItem/addItems';
 import {db} from './firebaseconnect';
 import ItemView from './Components/itemView/ItemView';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {Switch,Route} from 'react-router-dom';
 import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
-let lastsnapshot=null;
-const MAX=6;
+const MAX=12;
 class Body extends Component{
 constructor(props){
 super(props)
@@ -80,7 +78,7 @@ return(
    
    
     <button className="btn-body" onClick={()=>{
-     this.setState({loadmax : this.state.loadmax+MAX})
+     this.setState({loadmax :this.state.loadmax+MAX})
     }}>More....</button>
 
   </div>
@@ -113,6 +111,8 @@ Home=()=>{
         	{this.state.source.map((data,i)=>{
         	 return	<Card key={i} 
                 source={data}
+                checkoutf={this.props.checkoutf}
+                addtocart={this.props.addtocart}
         		/>
           })
     
@@ -174,7 +174,7 @@ render(){
 
  
 return(
-
+  <div className="main-body">
     <Switch>
    
           <Route path="/addItems">
@@ -189,7 +189,7 @@ return(
               <this.Home/>
           </Route>
       </Switch>
-   
+      </div>
 )
   
 
