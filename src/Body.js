@@ -80,7 +80,7 @@ return(
    
    
     <button className="btn-body" onClick={()=>{
-     this.setState({loadmax : this.state.loadmax+MAX})
+     this.setState({loadmax :this.state.loadmax+MAX})
     }}>More....</button>
 
   </div>
@@ -106,7 +106,7 @@ Home=()=>{
    load= <this.LoadMore/>
   }
   else{
-    load=<h2><span className="spinner-grow spinner-grow-sm" role="status"></span>Loading</h2>
+    load=<h1>Loading</h1>
   }
 	return(<div className=" home container">
         	{this.state.source.map((data,i)=>{
