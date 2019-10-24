@@ -66,7 +66,8 @@ class ItemView extends Component{
        
          if(item)
        { return(       
-<div className="container-fluid item">
+        <div className="item">
+<div className="container-fluid">
     <img src={item.imageurl} alt={item.name}/>
     <ul><li><h1>{item.name}</h1></li>    
         <li><h1>Price :  {item.price} Only </h1>
@@ -80,7 +81,7 @@ class ItemView extends Component{
     <div id="snackbar">Item Added to Cart</div>
         
     </div>
-  
+  </div>
         )}
         else {
             return(

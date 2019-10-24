@@ -13,11 +13,10 @@
 .bk{
 	background-image: url('./backg.jpg');
 	height: auto;
-	min-height: 3165px;
+	min-height: 100%;
 	width: 100%;
 	background-position: center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
-
 }

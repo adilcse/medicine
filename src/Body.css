@@ -48,5 +48,7 @@
 
 }
 .load{
-	transform: translateY(400px);
+	color: white;
+	top: calc(50%);
+	left: calc(50%);
 }
