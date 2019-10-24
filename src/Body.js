@@ -10,7 +10,8 @@ import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= new Array ();
-const MAX=12;
+let lastsnapshot=null;
+const MAX=6;
 class Body extends Component{
 constructor(props){
 super(props)
@@ -173,7 +174,7 @@ render(){
 
  
 return(
-  <div className="main-body">
+  <div className="">
     <Switch>
    
           <Route path="/addItems">

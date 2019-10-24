@@ -16,7 +16,7 @@ class Card extends React.Component{
 return(
 
 
-
+<div className="shadow">
 
 <Cardboot style={{ width: '18rem' }} >
 <Link to={`/Product/${source.item_id}`}> <Cardboot.Img variant="top" src={source.imageurl} className="card-img zoom" /></Link>
@@ -32,7 +32,7 @@ return(
   </Cardboot.Body>
   <div id="snackbar">Item Added to Cart</div>
 </Cardboot>
-  
+  </div>
 );}
 }
 export default Card;
