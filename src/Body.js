@@ -78,7 +78,7 @@ return(
    
    
     <button className="btn-body" onClick={()=>{
-     this.setState({loadmax : this.state.loadmax+MAX})
+     this.setState({loadmax :this.state.loadmax+MAX})
     }}>More....</button>
 
   </div>

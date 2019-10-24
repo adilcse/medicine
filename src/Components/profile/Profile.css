@@ -1,0 +1,15 @@
+input[type=text]{
+	margin-top: 10px;
+	width: 400px;
+
+}
+input[type=Button]{
+	margin-top: 4px;
+}
+img{
+	margin-top: 60px;
+	height: 150px;
+	width: 150px;
+	border-radius: 100px;
+	border-color: 2px solid white;
+}

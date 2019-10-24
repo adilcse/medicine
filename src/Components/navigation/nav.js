@@ -59,7 +59,7 @@ class Nav extends Component{
 	    }
 		return(
 		<div align="center">
-		<nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" align="left">
+		<nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" align="left">
   <Link className="navbar-brand" to="/"> <Icon name='leaf' size='large' /> MedLife </Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
@@ -76,7 +76,7 @@ class Nav extends Component{
       </li>
      
       <li align="center"> 
-       <Searchcomponent className=" wd" searchchanged={this.props.searchchanged}  />
+       <Searchcomponent className="ws" placeholder="Search" searchchanged={this.props.searchchanged}  />
       </li>
      {
 		
