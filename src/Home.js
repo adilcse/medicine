@@ -86,7 +86,7 @@ class Home extends Component{
        obj.setState({
          cartitems:items
        })
-       console.log(items)
+       
     });
       })
       .catch(err => {

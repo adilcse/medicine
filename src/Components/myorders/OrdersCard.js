@@ -6,7 +6,6 @@ class OrderCard extends Component{
 render(){
   let source=this.props.source;
   let number=1;
-  console.log(this.props.source)
   if(!this.props.source){
     return;
   }
