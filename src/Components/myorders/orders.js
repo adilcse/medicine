@@ -61,8 +61,10 @@ class Orders extends Component{
                 <h1>Nothing Ordered Yet...</h1>
             )
         }
+        {console.log(this.state.orders)}
         return (
             <div>
+
             <h2>Orders</h2>
             <div className="container-fluid">
             <div className="row">

@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "revive",
     "public": "build",
     "ignore": [
       "firebase.json",

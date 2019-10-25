@@ -30,19 +30,20 @@ class CartCard extends Component{
     }
      subitem=(num)=>{
        let cartRef=db.collection("LastUser").doc(user.uid).collection("Cart").doc(this.props.item.item.item_id);
+       num--;
+       if(num<=0){
+         cartRef.delete().then(()=>{
+           console.log("item deleted")
+         });}
         cartRef.set({
           numbers :  firebase.firestore.FieldValue.increment(-1)
          
        }, { merge: true })
        .then(function() {
-         num--;
-       if(num<=-1){
-         cartRef.delete().then(()=>{
-           console.log("item deleted")
-         })
+      
          }
 
-       })
+       )
        .catch(function(error) {
          console.error("Error writing document: ", error);
        });
@@ -62,7 +63,7 @@ class CartCard extends Component{
     
         return (
            
-            <div className="card mb-5 cl2" >
+            <div className="card mb-5 " >
                
   <div className="row no-gutters">
    
