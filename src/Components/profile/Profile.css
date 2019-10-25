@@ -2,6 +2,16 @@
 input[type=Button]{
 	margin-top: 4px;
 }
+input[type=text]{
+	width: 25rem;
+}
+ .im{
+	margin-top: 10px;
+	margin-bottom: 3px;
+	height: 200px;
+	width: 200px;
+	border-radius: 200px;
+}
 .img-profile{
 	margin-top: 0px;
 	height: 150px;

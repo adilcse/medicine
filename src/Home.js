@@ -6,7 +6,7 @@ import Body from './Body';
 
 import Nav from './Components/navigation/nav';
 import {db,firebase} from './firebaseconnect';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 let cartRef;
  
 
@@ -86,7 +86,7 @@ class Home extends Component{
        obj.setState({
          cartitems:items
        })
-       console.log(items)
+       
     });
       })
       .catch(err => {

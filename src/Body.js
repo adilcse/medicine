@@ -62,7 +62,7 @@ fetchitems=()=>{
        
     });
 }).then(()=>{
- console.log(source);
+
   this.setState({
     itemfetched :true,
     source : source
@@ -86,7 +86,7 @@ return(
 )
 else{
   return(
-    <h1>No more items....</h1>
+    <h1 >Sorry!no more content...☹️</h1>
   )
 }
   
@@ -105,7 +105,9 @@ Home=()=>{
    load= <this.LoadMore/>
   }
   else{
-    load=<h1>Loading</h1>
+    return <div className="load" status="load">
+    <span className="spinner-grow spinner-grow-sm" role="status"></span>
+    <h2>Loading</h2></div>
   }
 	return(<div className="  container home-container">
         	{this.state.source.map((data,i)=>{

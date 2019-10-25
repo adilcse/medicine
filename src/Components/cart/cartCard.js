@@ -24,26 +24,36 @@ class CartCard extends Component{
        .catch(function(error) {
          console.error("Error writing document: ", error);
        });
+      
        
 
     }
-    removeitem=(num)=>{
+     subitem=(num)=>{
        let cartRef=db.collection("LastUser").doc(user.uid).collection("Cart").doc(this.props.item.item.item_id);
+       num--;
+       if(num<=0){
+         cartRef.delete().then(()=>{
+           console.log("item deleted")
+         });}
         cartRef.set({
           numbers :  firebase.firestore.FieldValue.increment(-1)
          
        }, { merge: true })
        .then(function() {
-         num--;
-       if(num<=0){
-         cartRef.delete().then(()=>{
-           console.log("item deleted")
-         })
+      
          }
 
-       })
+       )
        .catch(function(error) {
          console.error("Error writing document: ", error);
+       });
+     }
+    removeitem=(num)=>{
+       let cartRef=db.collection("LastUser").doc(user.uid).collection("Cart").doc(this.props.item.item.item_id);
+        cartRef.delete().then(()=>{
+           console.log("item deleted");
+         }).catch(function(error) {
+         console.error("Error removing document: ", error);
        });
 
     }
@@ -53,7 +63,7 @@ class CartCard extends Component{
     
         return (
            
-            <div className="card mb-5 cl2" >
+            <div className="card mb-5 " >
                
   <div className="row no-gutters">
    
@@ -65,7 +75,7 @@ class CartCard extends Component{
       <Link to={`/Product/${source.item_id}`}>  <h4 className="card-title">{source.name}  </h4> </Link>
     
         <h4> ₹ {source.price}  only   </h4> 
-        Quantity : <button className="btn btn-success" onClick={this.additem}>Add</button>  {this.props.item.numbers} <button className="btn btn-warning" onClick={()=>this.removeitem(this.props.item.numbers)}>Remove</button> 
+        Quantity : <button className="btn btn-success" onClick={this.additem}>+</button> <input className="ct" type="text" value={this.props.item.numbers}/> <button className="btn btn-danger" onClick={()=>this.subitem(this.props.item.numbers)}>-</button> <button className="btn btn-warning" onClick={this.removeitem}>Remove</button> 
         
        
     

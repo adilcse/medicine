@@ -402,7 +402,7 @@ default :
        landmark,
        alternate} = this.state;
 
-     const Shipping =        <div className="col-5"  >
+     const Shipping =        <div className="col-5 cl2"  >
      <h2 align = "left">Shipping address</h2>
    
      <div align="center" className="container-fluid md-form">
@@ -480,7 +480,7 @@ Alternate no:<input type="text"  className="form-control" id="alternate" placeho
    </div>
   
  </div>
-     const Review =   <div className="col-4">
+     const Review =   <div className="col-4 cl2">
      <div className="card card-checkout" >
 <div className="card-body" align="left">
 <h2 className="card-title">Order Review :</h2>

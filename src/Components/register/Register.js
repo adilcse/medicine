@@ -1,5 +1,6 @@
 import React from 'react';
 import './Register.css';
+import log from '../login/log.jpeg';
 import { db } from '../../firebaseconnect';
 
 function Register({cancel,register,firebase}) {
@@ -162,7 +163,7 @@ return (
 
 <div className="container-fluid row no-gutters">
   <div className="col-md-4">
-    <img src="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/07/medical-logo.jpg" className="card-img" alt="logo"></img>
+    <img src={log} className="card-img" alt="logo"></img>
   </div>
   <div className="col-md-8 bg-light y">
    <h2 align="center"> Register</h2>

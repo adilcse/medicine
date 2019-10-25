@@ -29,7 +29,7 @@ constructor(props){
         if(this.props.cartitems.length <=0){
             total = 0;
             return(
-                <div  >
+                <div  className="cl2">
             <h1>No item in cart</h1>
             <Link className="navbar-brand" to="/"> Shop Now </Link>
             </div>
@@ -41,12 +41,12 @@ constructor(props){
             });
     
         return(
-            <div classNAme="container">
+            <div classNAme="container-fluid">
             <div className="row">
               <div className="col">
                 
               </div>
-              <div className="col-6 bd">
+              <div className="col-6 cl2">
             
         	{this.props.cartitems.map((data,i)=>{
         	 return	<CartCard key={i} 
@@ -57,7 +57,7 @@ constructor(props){
     
             }
               </div>
-              <div className="col cart-total">
+              <div className="col cart-total cl2">
               <h1>Total : ₹ {total}/- </h1> 
            <button className="btn btn-primary btn-lg" onClick={this.checkout.bind(this)}>Checkout</button>
            <Link className="navbar-brand" to="/">  <button className="btn btn-info btn-lg" >Shop More</button> </Link>

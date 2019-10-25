@@ -1,4 +1,5 @@
 import React from 'react';
+import log from './log.jpeg';
 
 
 function Login({cancel,login,firebase}) {
@@ -83,7 +84,7 @@ function googlesignin(){
 
   <div className="row no-gutters">
     <div className="col-md-4">
-      <img src="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/07/medical-logo.jpg" className="card-img" alt="logo"></img>
+      <img src={log} className="card-img" alt="logo"></img>
     </div>
     <div className="col-md-8 bg-light y">
      <h2> Login</h2>
