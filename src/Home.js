@@ -122,7 +122,22 @@ console.log("Login status",status);
 if(status)
 {	x.setState({
 			signedin:true
-		});
+    });
+    db.collection('LastUser').doc(status.uid).get().then(doc=>{
+      if(doc.exists){
+        console.log("user exist")
+        x.setState({
+          signedin:true
+        });
+      }
+      else{
+        x.setState({
+          signedin:false,
+          signinbox:false,
+          registeropen:true
+        });
+      }
+    })
 
 
 }else{
@@ -130,7 +145,7 @@ if(status)
 			signedin:false
 		});
 }
-console.log("signedin ",this.state.signedin);
+console.log("signedin ",status);
 }
 //do signout stuff here
 signout(){

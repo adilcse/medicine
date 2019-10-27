@@ -185,7 +185,7 @@ return(
           <Route path="/addItems">
           <this.AddItems/>
            </Route>
-           <Route path="/Product/:id" exact render={props=><ItemView addtocart={this.props.addtocart} checkoutf={this.props.checkoutf} {...props}/>}/>
+           <Route path="/Product/:id" exact render={props=><ItemView addtocart={this.props.addtocart} checkoutf={this.props.checkoutf} user={this.props.user} {...props}/>}/>
            <Route path="/Myorders"><this.MyOrders/></Route>
             <Route path="/Mycart"><this.MyCart/></Route>
             <Route path="/Profile"><this.MyProfile/></Route>
