@@ -9,12 +9,12 @@ const db= firebase.firestore();
   
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
-    console.log(email,password);
+   
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
 var user = firebase.auth().currentUser;
 
 if (user) {
- console.log(user.email);
+
  login(user);
 } }
 ).catch(function(error) {

@@ -30,7 +30,7 @@ constructor(props){
             total = 0;
             return(
                 <div  className="cl2">
-            <h1>No item in cart</h1>
+            <div className="not-admin">No item in cart</div>
             <Link className="navbar-brand" to="/"> Shop Now </Link>
             </div>
                 )

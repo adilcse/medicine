@@ -1,5 +1,5 @@
 .card-body-order{
-    margin: 50px;
+    margin:3px 20px 3px 20px;
 }
 .mb-5{
     margin:5px;
@@ -15,4 +15,8 @@ padding : 0px;
 }
 .orderbody{
 margin-top: 5rem
+}
+.order-card{
+    margin:10px;
+    padding-top: 2px;
 }
