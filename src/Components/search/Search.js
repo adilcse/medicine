@@ -79,7 +79,7 @@ this.props.searchchanged(result.item_id)
     if(redirect){
 
    
-      re= <Redirect to={`/Product/${redirecturl}`}/>
+  //    re= <Redirect to={`/Product/${redirecturl}`}/>
    
       window.location = window.location.origin.toString()+`/Product/${redirecturl}`;
      

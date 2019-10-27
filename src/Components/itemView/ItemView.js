@@ -93,7 +93,7 @@ class ItemView extends Component{
         )}
         else {
             return(
-            <div className="load">
+            <div className=" container-fluid load">
     <span className="spinner-grow spinner-grow-sm" role="status"></span>
     <h2>Loading</h2>
     
