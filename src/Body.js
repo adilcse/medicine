@@ -9,7 +9,7 @@ import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
-let source= new Array ();
+let source= [];
 const MAX=12;
 class Body extends Component{
 constructor(props){
@@ -86,7 +86,7 @@ return(
 )
 else{
   return(
-    <h1 >Sorry!no more content...☹️</h1>
+    <h1>Sorry!no more content...☹️</h1>
   )
 }
   

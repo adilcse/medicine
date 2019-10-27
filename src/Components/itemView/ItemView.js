@@ -68,17 +68,25 @@ class ItemView extends Component{
          
            return(       
 <div className="container-fluid item">
-    <img src={item.imageurl} alt={item.name}/>
+<img src={item.imageurl} alt={item.name}/><br/>
+<div>
+<ul><li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
+<li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
+        <button className="btn btn-info"> checkout</button></Link></li>
+        <div id="snackbar">Item Added to Cart</div>
+        </ul>
+        </div>
+        <br/>
+  
     <ul><li><h1>{item.name}</h1></li>    
         <li><h1><i><small><strike>MRP ₹{Math.floor(parseInt(item.price)*1.1)}</strike></small> </i>₹{item.price}</h1>
     <p>  with 10% discount </p>
     </li>
-    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
-        <button className="btn btn-info"> checkout</button></Link></li>
-    <li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
+  
+    
     <li><p>{item.description}</p></li>
     </ul>
-    <div id="snackbar">Item Added to Cart</div>
+  
         
     </div>
  

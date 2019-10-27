@@ -15,8 +15,7 @@ class Profile extends Component{
         }
     }
     handeladdresschange=(add)=>{
-        console.log("updates")
-      
+     
         const name=document.getElementById("name").value;
         const pin=document.getElementById("pin").value;
         const mobile=document.getElementById("Mobileno").value;
@@ -189,21 +188,23 @@ default :
     }
     updateaddress=()=>{
         if(this.state.edit){
-            this.setState({
-                edit:false,
-                edittext:"Edit"
-            })
+          
         let obj=this;
         if(!this.verifyaddress()){
           addressupdatedclass = "alert alert-danger";
-  
+         
           this.setState({
             shipping : true,
             payment : false,
-            addressupdated : false
+            addressupdated : false,
+            edit:true,
+            edittext:"UPDATE"
           })
         }else{
-  
+         this.setState({
+          edit:false,
+          edittext:"EDIT"
+         }) 
        
         let cartRef=db.collection("LastUser").doc(this.state.user.uid);
       

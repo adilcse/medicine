@@ -1,7 +1,7 @@
 .item{
-	transform: translateY(30%);
+	transform: translateY(10%);
 	max-width: 70%;
-	padding: 10px 0px 10px 0px;
+	margin-top: 5px;
 	background-color: white;
 	border: 1px solid green;
 	border-radius: 0px 30px;
@@ -33,6 +33,11 @@ ul li{
 	background-color: green;
 	border-radius: 20px;
 	box-shadow: 3px 3px 10px black;
+}
+.btn-info{
+	padding: 5px;
+	margin: 5px;
+
 }
 .btn-info:hover{
 	color: white;
