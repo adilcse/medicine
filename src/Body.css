@@ -20,8 +20,8 @@
 	display:grid;
 	grid-gap: 30px;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
-	overflow : 
+
+	overflow: hidden;
 }
 .addItemcss{
 	margin-top: 50px;
@@ -29,7 +29,7 @@
 }
 @media screen and (max-width: 1200px)
 {
-.home{
+.home-container{
 	display:grid;
 	grid-template-columns: 1fr 1fr;
 	overflow: hidden;

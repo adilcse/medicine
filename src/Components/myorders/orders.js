@@ -63,10 +63,11 @@ class Orders extends Component{
         }
         {console.log(this.state.orders)}
         return (
-            <div>
+            <div className="orderbody">
 
-            <h2>Orders</h2>
+           
             <div className="container-fluid">
+            <h2>Orders</h2>
             <div className="row">
                  <div className="col">
     
