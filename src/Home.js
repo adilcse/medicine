@@ -50,14 +50,14 @@ class Home extends Component{
       if (user) {
         const uid=user.uid;
         let userRef = db.collection('LastUser').doc(uid);
-    let getDoc = userRef.get()
+   userRef.get()
       .then(doc => {
         if (!doc.exists) {
           console.log('user not exist');
            obj.setState({
         isAdmin:false,
         signinopen:false,
-        registeropen:true
+       
        });
         } else {
           let userdetails = doc.data();
@@ -95,8 +95,13 @@ class Home extends Component{
       
       } else {
         console.log("check");
-         obj.setState({user:false,
-          signedin: false
+         obj.setState({
+           user:false,
+          signedin: false,
+         
+            isAdmin:false
+           
+         
         });
       }
     });
@@ -126,6 +131,18 @@ if(status)
     db.collection('LastUser').doc(status.uid).get().then(doc=>{
       if(doc.exists){
         console.log("user exist")
+        if(doc.data().type === "admin"){
+          x.setState({
+      isAdmin:true
+     
+     });
+        }else{
+          x.setState({
+            isAdmin:false
+           
+           });
+
+        }
         x.setState({
           signedin:true
         });
@@ -189,9 +206,17 @@ cartRef=db.collection("LastUser").doc(this.state.uid).collection("Cart");
   
 }
 checkout=(items,price,via)=>{
+  let p=items;
+  if(via==="item"){
+    p=[{
+      item:items,
+      numbers:1
+
+    }]
+  }
   this.setState({
     checkout :{
-      items : items,
+      items : p,
       price : price,
       via : via
     

@@ -4,13 +4,14 @@ import './Body.css';
 import AddItems from './Components/addItem/addItems';
 import {db} from './firebaseconnect';
 import ItemView from './Components/itemView/ItemView';
+import EditItem from './Components/itemView/EditItem';
 import {Switch,Route} from 'react-router-dom';
 import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
 let source= [];
-const MAX=12;
+const MAX=9;
 class Body extends Component{
 constructor(props){
 super(props)
@@ -30,6 +31,7 @@ this.MyCart = this.MyCart.bind(this);
 this.LoadMore = this.LoadMore.bind(this);
 this.MyProfile = this.MyProfile.bind(this);
 this.Checkout = this.Checkout.bind(this);
+this.EditItem = this.EditItem.bind(this);
 }
 MyCart=()=>{
   return(
@@ -171,9 +173,17 @@ Checkout=()=>{
       checkout={this.props.checkout}
       user={this.props.user}
       cart={this.props.cartitems}
+
       {...this.props}
       />
       );
+}
+EditItem=()=>{
+  return (<EditItem
+  isAdmin={this.props.isAdmin}
+  {...this.props}
+  />);
+
 }
 render(){
 
@@ -185,11 +195,21 @@ return(
           <Route path="/addItems">
           <this.AddItems/>
            </Route>
-           <Route path="/Product/:id" exact render={props=><ItemView addtocart={this.props.addtocart} checkoutf={this.props.checkoutf} user={this.props.user} {...props}/>}/>
+           <Route path="/Product/:id" exact render={props=><ItemView 
+           addtocart={this.props.addtocart}
+            checkoutf={this.props.checkoutf} 
+            isAdmin={this.props.isAdmin}
+           user={this.props.user} {...props}/>}/>
            <Route path="/Myorders"><this.MyOrders/></Route>
             <Route path="/Mycart"><this.MyCart/></Route>
             <Route path="/Profile"><this.MyProfile/></Route>
-            <Route path="/Checkout"><this.Checkout/></Route>
+            <Route path="/Checkout" exact><this.Checkout/></Route>
+            <Route path="/EditItem/:id" exact render={props=><EditItem
+            isAdmin={this.props.isAdmin}
+            user={this.props.user}
+            {...props}
+            
+            />}></Route>
            <Route path="/" exact>
               <this.Home/>
           </Route>

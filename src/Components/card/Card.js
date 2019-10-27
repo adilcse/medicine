@@ -25,8 +25,7 @@ class Card extends React.Component{
 }
   render(){
     const source= this.props.source;
-    let sourcearray=[];
-    sourcearray.push(source);
+   
 
 return(
 
@@ -41,7 +40,7 @@ return(
    <h3><i><small><strike>MRP ₹{Math.floor(parseInt(source.price)*1.1)}</strike></small> </i>₹{source.price}</h3>
     </Cardboot.Text>
     <Link className="navbar-brand" to="/Checkout" >
-    <Button variant="primary" onClick={()=>this.props.checkoutf(sourcearray,source.price,"item")}>Buy </Button> 
+    <Button variant="primary" onClick={()=>this.props.checkoutf(source,source.price,"item")}>Buy </Button> 
     </Link>
     <Button variant="primary"  onClick={this.tocart}>Add to Cart</Button> 
   </Cardboot.Body>

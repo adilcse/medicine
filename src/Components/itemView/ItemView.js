@@ -22,6 +22,7 @@ class ItemView extends Component{
       console.log(this.props)
     }
     componentWillMount(){
+        console.log(this.props)
         this.setState({
             id :this.props.match.params.id
         })
@@ -62,19 +63,28 @@ class ItemView extends Component{
     render(){
      
         let item = this.state.item[0];
+        if(item)
+        { 
+          
+        let btn=<ul><li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
+        <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
+                <button className="btn btn-info"> checkout</button></Link></li> </ul>
+       if(this.props.isAdmin){
+           console.log(this.props)
+        btn=<ul><li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
+        <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(item,item.price,"item")}>
+                <button className="btn btn-info"> checkout</button></Link></li>
+                <li>  <Link to={`/EditItem/${item.item_id}`} > <button className="btn btn-info"> EDIT</button></Link></li>
+                 </ul>
+       }
        
-         if(item)
-       { 
-         
            return(       
 <div className="container-fluid item">
 <img src={item.imageurl} alt={item.name}/><br/>
 <div>
-<ul><li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
-<li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
-        <button className="btn btn-info"> checkout</button></Link></li>
+{btn}
         <div id="snackbar">Item Added to Cart</div>
-        </ul>
+       
         </div>
         <br/>
   

@@ -72,7 +72,19 @@ ul li{
 	bottom: 30px;
 	font-size: 17px;
   }
-  
+  .not-admin{
+	transform: translateY(40%);
+	max-width: 70%;
+	height:100px;
+	align-items: center;
+	padding-top: 30px;
+	margin-top: 200px;
+	background-color: white;
+	border: 1px solid green;
+	border-radius: 0px 30px;
+	box-shadow: 7px 7px 20px black;
+	font-size: 4rem;
+  }
   #snackbar.show {
 	visibility: visible;
 	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
