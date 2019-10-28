@@ -10,6 +10,7 @@ import Mycart from './Components/cart/Mycart';
 import Profile from './Components/profile/Profile';
 import Orders from './Components/myorders/orders';
 import Checkout from './Components/checkout/Checkout';
+import ErrorPage from './Components/itemView/ErrorPage';
 let source= [];
 const MAX=9;
 class Body extends Component{
@@ -192,7 +193,7 @@ return(
   <div className="main-body bk">
     <Switch>
    
-          <Route path="/addItems">
+          <Route path="/addItems" exact>
           <this.AddItems/>
            </Route>
            <Route path="/Product/:id" exact render={props=><ItemView 
@@ -200,9 +201,9 @@ return(
             checkoutf={this.props.checkoutf} 
             isAdmin={this.props.isAdmin}
            user={this.props.user} {...props}/>}/>
-           <Route path="/Myorders"><this.MyOrders/></Route>
-            <Route path="/Mycart"><this.MyCart/></Route>
-            <Route path="/Profile"><this.MyProfile/></Route>
+           <Route path="/Myorders" exact><this.MyOrders/></Route>
+            <Route path="/Mycart" exact><this.MyCart/></Route>
+            <Route path="/Profile" exact><this.MyProfile/></Route>
             <Route path="/Checkout" exact><this.Checkout/></Route>
             <Route path="/EditItem/:id" exact render={props=><EditItem
             isAdmin={this.props.isAdmin}
@@ -212,6 +213,9 @@ return(
             />}></Route>
            <Route path="/" exact>
               <this.Home/>
+          </Route>
+          <Route path="/" >
+              <ErrorPage/>
           </Route>
       </Switch>
       </div>
