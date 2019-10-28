@@ -55,9 +55,22 @@ function googlesignin(){
           login(user);
       } else {
          
-          console.log("user not registered");
-          firebase.auth().signOut();
-          window.alert("please register first")
+      
+        db.collection("LastUser").doc(user.uid).set({
+         name: user.displayName ,
+         email: user.email,
+         type : "user",
+         timestamp: firebase.firestore.FieldValue.serverTimestamp()
+       })
+       .then(function() {
+         console.log("user added to database");
+         login(user);
+       })
+       .catch(function(error) {
+         console.error("Error writing document: ", error);
+       });
+      
+         
          
       }
   }).catch(function(error) {

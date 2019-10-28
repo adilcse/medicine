@@ -127,7 +127,8 @@ docRef.get().then(function(doc) {
 
     }
     else if(this.state.formvalid){
-  	 progressbar.hidden =false;
+     progressbar.hidden =false;
+     document.getElementById("Uploadstatus").hidden=false;
   	const {image} = this.state;
   	const uploadTask = storage.ref(`items/images/${itemid}`).put(image);
       uploadTask.on('state_changed', 
@@ -143,6 +144,7 @@ docRef.get().then(function(doc) {
     () => {
         // complete function ....
          progressbar.hidden =true;
+         document.getElementById("Uploadstatus").hidden=true;
         storage.ref('items/images').child(itemid).getDownloadURL().then(url => {
           
             	db.collection("Items").doc(itemid).set({
@@ -163,7 +165,7 @@ docRef.get().then(function(doc) {
             document.getElementById("form-itemtype").value = ""
            document.getElementById("takenid").hidden = true
     document.getElementById("uniqueid").hidden = true
-						  document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
+						  document.getElementById('addimage').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 						this.setState = initialstate;
 
 					})
@@ -186,9 +188,9 @@ handleDragover(event){
   console.log(event.target.files[0]);
   let files= event.target.files[0];
   this.setState({ image: files, imageSelected:true })
-  var img = document.querySelector('img'); 
-
-    if (files.type === "image/jpeg" || files.type === "image/png" ) {
+  var img = document.getElementById('addimage'); 
+if(files)
+   { if (files.type === "image/jpeg" || files.type === "image/png" ) {
      
         img.src = URL.createObjectURL(files); // set src to file url
         this.setState({
@@ -201,7 +203,7 @@ this.setState({
           imageadded : false
         })
     window.alert("invalid file type")
-  }
+  }}
 }
   
 clear(){
@@ -210,7 +212,7 @@ clear(){
 	document.getElementById("form-itemprice").value = ""
   document.getElementById("form-description").value = ""
   document.getElementById("form-itemtype").value = ""
-	 document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
+	 document.getElementById('addimage').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 }
   render() {
    
@@ -235,6 +237,8 @@ clear(){
         
         /><input type="file" onChange={(event)=> { this.handleDragover(event) }}></input>
          <progress value={this.state.progress} max="100" hidden/>
+          
+        <div id="Uploadstatus" hidden> Uploading {this.state.progress} %</div>
       
         </FileDrop>
    
