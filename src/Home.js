@@ -187,7 +187,8 @@ render(){
 
 return(
   <Router >
-  <div className="bk">
+
+  <div >
   <Nav signinstatus={this.state.signedin}
   signinopen={this.state.signinopen}
   registeropen={this.state.registeropen} 
@@ -203,7 +204,8 @@ return(
   cartitems={this.state.cartitems}
 
   />
-
+  </div >
+<div>
     <Body
      isAdmin={this.state.isAdmin}
      addtocart={this.addtocart}
@@ -212,8 +214,7 @@ return(
      checkout = {this.state.checkout}
      checkoutf={this.checkout}
     />
-   
-  </div>
+   </div>
   </Router>
 				
 	);

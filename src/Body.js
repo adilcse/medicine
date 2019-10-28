@@ -129,9 +129,9 @@ Home=()=>{
 }
 AddItems=()=>{
   return(
-     <div className="addItemcss">
+     <div className="addItemcss container">
   <div className="row">
-    <div className="col-md">
+    <div className="col">
      
     </div>
     <div >
@@ -139,7 +139,7 @@ AddItems=()=>{
      isAdmin={this.props.isAdmin}
      />
     </div>
-    <div className="col-md">
+    <div className="col">
     
     </div>
   </div>
@@ -179,7 +179,7 @@ render(){
 
  
 return(
-  <div className="main-body bk">
+  <div className="main-body">
     <Switch>
    
           <Route path="/addItems">

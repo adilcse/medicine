@@ -69,14 +69,16 @@ class ItemView extends Component{
            return(       
 <div className="container-fluid item">
     <img src={item.imageurl} alt={item.name}/>
-    <ul><li><h1>{item.name}</h1></li>    
-        <li><h1><i><small><strike>MRP ₹{Math.floor(parseInt(item.price)*1.1)}</strike></small> </i>₹{item.price}</h1>
+    <ul className="nav flex-column"><li><h1>{item.name}</h1></li>    
+        <li ><h1><i><small><strike>MRP ₹{Math.floor(parseInt(item.price)*1.1)}</strike></small> </i>₹{item.price}</h1>
     <p>  with 10% discount </p>
     </li>
-    <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
-        <button className="btn btn-info"> checkout</button></Link></li>
-    <li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
     <li><p>{item.description}</p></li>
+     <li><ul className="nav justify-content-center">
+    <li className="nav-item">    <Link to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
+        <button className="btn btn-info"> Checkout</button></Link></li>
+    <li className="nav-item"><button className="btn btn-warning" onClick={this.addtocart}> Add to cart</button></li>
+    </ul></li>
     </ul>
     <div id="snackbar">Item Added to Cart</div>
         

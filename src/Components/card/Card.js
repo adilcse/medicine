@@ -35,17 +35,17 @@ return(
 <Cardboot  className="crd shadow" >
 <Link to={`/Product/${source.item_id}`}><Cardboot.Img variant="top" src={source.imageurl} className="card-img zoom" />
 </Link>
-  <Cardboot.Body>
-    <Cardboot.Title><Link to={`/Product/${source.item_id}`}><div className="title">{source.name}</div></Link></Cardboot.Title>
-    <Cardboot.Text>
-   <h3><i><small><strike>MRP ₹{Math.floor(parseInt(source.price)*1.1)}</strike></small> </i>₹{source.price}</h3>
-    </Cardboot.Text>
-    <Link className="navbar-brand" to="/Checkout" >
+  <Cardboot.Body >
+    <Cardboot.Title ><Link  to={`/Product/${source.item_id}`}><div className="title">{source.name}</div></Link></Cardboot.Title>
+    <Cardboot.Text >
+   <h3 className="pd"><i><small><strike>MRP ₹{Math.floor(parseInt(source.price)*1.1)}</strike></small> </i>₹{source.price}</h3>
+    </Cardboot.Text >
+    <Link className="navbar-brand " to="/Checkout" >
     <Button variant="primary" onClick={()=>this.props.checkoutf(sourcearray,source.price,"item")}>Buy </Button> 
     </Link>
-    <Button variant="primary"  onClick={this.tocart}>Add to Cart</Button> 
+    <Button variant="primary"  className="pd" onClick={this.tocart}>Add to Cart</Button> 
   </Cardboot.Body>
-  <div id="snackbar">Item Added to Cart</div>
+  <div id="snackbar" >Item Added to Cart</div>
 </Cardboot>
  
 );

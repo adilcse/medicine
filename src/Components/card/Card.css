@@ -34,14 +34,14 @@ overflow: hidden;
 
 
 .slick-slide {
-    padding: 0 1.438rem;
+    padding:1.438rem;
     cursor: pointer;
 }
 
 
 .ellipsis {
 	white-space: nowrap;
-	text-overflow: ellipsis;
+	text-overflow: scroll;
 	overflow: hidden;
   }
   small{
@@ -57,12 +57,75 @@ overflow: hidden;
   }
   .shadow{
 	box-shadow: 4px 4px 5px 0 gray;
-	height: 38 0px;
+	height: 380px;
 	width: 350px;
 	background-color: #ffffff;
   }
   .crd{
-	  border:  none;
 	  margin :10px;
 	  padding:  10px;
   }
+@media only screen and (max-width: 1000px)
+{
+	.crd{
+	  margin :0px;
+	  padding:  10px;
+  }
+  .card-img{
+	align-items :center;
+	width: 70%;
+    padding:1px;
+	height:70%;
+	max-height: 70%;
+
+}
+ .shadow{
+	box-shadow: 4px 4px 5px 0 gray;
+	height: auto;
+	width: 70%;
+	background-color: #ffffff;
+  }
+  .title{
+	font-size: 100%; 
+}
+.cardprice{
+	font-size:  70%;
+	font-family: 'Times New Roman', Times, serif,italic;
+    color:rgb(148, 67, 67);
+	
+}
+}
+@media only screen and (max-width: 800px)
+{
+	.crd{
+	  margin :1px;
+	  padding:  10px;
+  }
+  .card-img{
+	align-items :center;
+	width: 50%;
+    padding:1px;
+	height:50%;
+	max-height: 50%;
+
+}
+ .shadow{
+	box-shadow: 4px 4px 5px 0 gray;
+	height: auto;
+	width: 50%;
+	background-color: #ffffff;
+  }
+  .pd{
+  	padding: 0px;
+  	margin: 0px;
+  }
+  .title{
+	font-size: 70%%; 
+}
+.cardprice{
+	font-size:  50%;
+	font-family: 'Times New Roman', Times, serif,italic;
+    color:rgb(148, 67, 67);
+	
+}
+}

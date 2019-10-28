@@ -1,5 +1,5 @@
 .item{
-	transform: translateY(30%);
+	/*transform: translateY(30%);*/
 	max-width: 70%;
 	padding: 10px 0px 10px 0px;
 	background-color: white;
@@ -15,13 +15,15 @@
 	box-shadow: 3px 3px 12px black;
 	border-radius: 9px;
 	max-width: 100%;
+
 }
-ul{
-	display: inline-block;
+
+div ul{
+	display: block;
 	list-style-type: none;
 }
-ul li{
-	display: inline;
+ul li h1{
+	display: inline-block;
 	margin-right: 2px;
 }
 .btnn{
@@ -43,6 +45,12 @@ ul li{
 .btn-warning{
 	color: white;
 	
+}
+.btn-warning:hover{
+	color: white;
+	text-shadow: 4px 4px 3px black;
+	font-weight: bold;
+	transition: .5s;
 }
 .load{
 	transform: translateY(400px);
@@ -93,3 +101,44 @@ ul li{
 	from {bottom: 30px; opacity: 1;}
 	to {bottom: 0; opacity: 0;}
   }
+	@media only screen and (max-width: 1000px){
+	.item{
+	/*transform: translateY(30%);*/
+	max-width: 70%;
+	padding: 10px 0px 10px 0px;
+	background-color: white;
+	border: 1px solid green;
+	border-radius: 0px 30px;
+	box-shadow: 7px 7px 20px black;
+}
+.item img{
+	height: 70%;
+	width: 70%;
+	padding: 10px;
+	margin: 30px 10px 10px 10px;
+	box-shadow: 3px 3px 12px black;
+	border-radius: 9px;
+	max-width: 100%;
+
+}
+}
+	@media only screen and (max-width: 800px){
+	.item{
+	max-width: 70%;
+	padding: 10px 0px 10px 0px;
+	background-color: white;
+	border: 1px solid green;
+	border-radius: 0px 30px;
+	box-shadow: 7px 7px 20px black;
+}
+.item img{
+	height: 50%;
+	width: 50%;
+	padding: 10px;
+	margin: 30px 10px 10px 10px;
+	box-shadow: 3px 3px 12px black;
+	border-radius: 9px;
+	max-width: 100%;
+
+}
+}

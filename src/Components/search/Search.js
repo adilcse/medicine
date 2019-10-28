@@ -89,7 +89,7 @@ this.props.searchchanged(result.item_id)
     }
     {let x = document.getElementsByClassName("eight")[0];
     let att = document.createAttribute("class");       // Create a "class" attribute
-    att.value = "wide column ";   
+    att.value = "wide column";   
     if(x)
     x.setAttributeNode(att);  
   }
