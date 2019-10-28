@@ -163,7 +163,7 @@ docRef.get().then(function(doc) {
             document.getElementById("form-itemtype").value = ""
            document.getElementById("takenid").hidden = true
     document.getElementById("uniqueid").hidden = true
-						  document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
+						  document.getElementById('addimage').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 						this.setState = initialstate;
 
 					})
@@ -186,9 +186,9 @@ handleDragover(event){
   console.log(event.target.files[0]);
   let files= event.target.files[0];
   this.setState({ image: files, imageSelected:true })
-  var img = document.querySelector('img'); 
-
-    if (files.type === "image/jpeg" || files.type === "image/png" ) {
+  var img = document.getElementById('addimage'); 
+if(files)
+   { if (files.type === "image/jpeg" || files.type === "image/png" ) {
      
         img.src = URL.createObjectURL(files); // set src to file url
         this.setState({
@@ -201,7 +201,7 @@ this.setState({
           imageadded : false
         })
     window.alert("invalid file type")
-  }
+  }}
 }
   
 clear(){
@@ -210,7 +210,7 @@ clear(){
 	document.getElementById("form-itemprice").value = ""
   document.getElementById("form-description").value = ""
   document.getElementById("form-itemtype").value = ""
-	 document.querySelector('img').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
+	 document.getElementById('addimage').src= "https://www.mbsplugins.de/images/drop-files-here-extra.jpg"
 }
   render() {
    
