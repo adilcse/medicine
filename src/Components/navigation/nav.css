@@ -1,0 +1,36 @@
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+nav ul li{
+	float: left;
+
+}
+.clr{
+	color: white;
+	 display: block;
+  
+  text-align: center;
+  padding: 0px 16px;
+  text-decoration: none;
+}
+.extra{
+		visibility: visible;
+	}
+	.wd{
+		
+	}
+@media only screen and (max-width: 1000px)
+{
+	.extra{
+		
+	}
+	ul li{
+		margin: 4px 1px 4px 1px;
+	}
+}
+.nv{
+	max-height: 200px;
+}

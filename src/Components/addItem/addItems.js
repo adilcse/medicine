@@ -127,7 +127,8 @@ docRef.get().then(function(doc) {
 
     }
     else if(this.state.formvalid){
-  	 progressbar.hidden =false;
+     progressbar.hidden =false;
+     document.getElementById("Uploadstatus").hidden=false;
   	const {image} = this.state;
   	const uploadTask = storage.ref(`items/images/${itemid}`).put(image);
       uploadTask.on('state_changed', 
@@ -143,6 +144,7 @@ docRef.get().then(function(doc) {
     () => {
         // complete function ....
          progressbar.hidden =true;
+         document.getElementById("Uploadstatus").hidden=true;
         storage.ref('items/images').child(itemid).getDownloadURL().then(url => {
           
             	db.collection("Items").doc(itemid).set({
@@ -235,6 +237,8 @@ clear(){
         
         /><input type="file" onChange={(event)=> { this.handleDragover(event) }}></input>
          <progress value={this.state.progress} max="100" hidden/>
+          
+        <div id="Uploadstatus" hidden> Uploading {this.state.progress} %</div>
       
         </FileDrop>
    
