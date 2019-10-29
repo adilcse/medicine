@@ -19,7 +19,6 @@ constructor(props){
     }
     render(){
        
-        console.log("cart changed")
        if(this.state.checkout){
            return(
                <Redirect to= "/Checkout"/>
