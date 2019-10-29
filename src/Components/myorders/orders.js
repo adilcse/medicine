@@ -60,7 +60,7 @@ class Orders extends Component{
             return(
                 <div className="not-admin">Nothing Ordered Yet...</div>)
         }
-        {console.log(this.state.orders)}
+       
         return (
             <div className="orderbody">
 

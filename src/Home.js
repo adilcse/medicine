@@ -79,7 +79,7 @@ class Home extends Component{
         return doc.data();
       }).then(user=>{
        userRef.collection("Cart").orderBy("time", "desc").onSnapshot(function(querySnapshot) {
-        var items = new Array();
+        var items = [];
         querySnapshot.forEach(function(doc) {
             items.push(doc.data());
         });
@@ -227,8 +227,7 @@ render(){
 
 return(
   <Router >
-
-  <div >
+  <div className="bk">
   <Nav signinstatus={this.state.signedin}
   signinopen={this.state.signinopen}
   registeropen={this.state.registeropen} 
@@ -244,8 +243,7 @@ return(
   cartitems={this.state.cartitems}
 
   />
-  </div >
-<div>
+
     <Body
      isAdmin={this.state.isAdmin}
      addtocart={this.addtocart}
@@ -254,7 +252,8 @@ return(
      checkout = {this.state.checkout}
      checkoutf={this.checkout}
     />
-   </div>
+   
+  </div>
   </Router>
 				
 	);

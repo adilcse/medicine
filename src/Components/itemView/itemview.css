@@ -2,6 +2,8 @@
 	/*transform: translateY(30%);*/
 	transform: translateY(10%);
 	max-width: 100%;
+	transform: translateY(10%);
+	max-width: 70%;
 	margin-top: 5px;
 	background-color: white;
 	border: 1px solid green;
@@ -16,15 +18,13 @@
 	box-shadow: 3px 3px 12px black;
 	border-radius: 9px;
 	max-width: 100%;
-
 }
-
-div ul{
-	display: block;
+ul{
+	display: inline-block;
 	list-style-type: none;
 }
-ul li h1{
-	display: inline-block;
+ul li{
+	display: inline;
 	margin-right: 2px;
 }
 .btnn{
@@ -57,12 +57,6 @@ ul li h1{
 .btn-warning{
 	color: white;
 	
-}
-.btn-warning:hover{
-	color: white;
-	text-shadow: 4px 4px 3px black;
-	font-weight: bold;
-	transition: .5s;
 }
 .load{
 	transform: translateY(400px);
@@ -169,3 +163,4 @@ ul li h1{
 
 }
 }
+  

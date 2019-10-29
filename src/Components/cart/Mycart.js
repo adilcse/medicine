@@ -19,7 +19,6 @@ constructor(props){
     }
     render(){
        
-        console.log("cart changed")
        if(this.state.checkout){
            return(
                <Redirect to= "/Checkout"/>
@@ -48,9 +47,18 @@ constructor(props){
             <div className="col-sm-8">
             {this.props.cartitems.map((data,i)=>{
            return <CartCard key={i} 
+            <div classNAme="container-fluid">
+            <div className="row">
+              <div className="col">
+                
+              </div>
+              <div className="col-6 cl2">
+            
+        	{this.props.cartitems.map((data,i)=>{
+        	 return	<CartCard key={i} 
                 item={data}
                 user={this.props.user}
-            />
+        		/>
           })
     
             }
@@ -64,8 +72,19 @@ constructor(props){
            
             <div>
 
+              </div>
+              <div className="col cart-total cl2">
+              <h1>Total : ₹ {total}/- </h1> 
+           <button className="btn btn-primary btn-lg" onClick={this.checkout.bind(this)}>Checkout</button>
+           <Link className="navbar-brand" to="/">  <button className="btn btn-info btn-lg" >Shop More</button> </Link>
+        
+              </div>
             </div>
-            </div> 
+            </div>
+          
+          
+    
+          
         )
         }
        

@@ -56,6 +56,11 @@ class ItemView extends Component{
         var x = document.getElementById("snackbar");
         x.className = "show";
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        if(!this.props.user){
+                x.innerHTML="Please Login First";
+                return;
+
+        }
         this.props.addtocart(this.state.item[0]);
     }
 
@@ -73,12 +78,21 @@ class ItemView extends Component{
         <li ><h1><i><small><strike>MRP ₹{Math.floor(parseInt(item.price)*1.1)}</strike></small> </i>₹{item.price}</h1>
     <p>  with 10% discount </p>
     </li>
+<img src={item.imageurl} alt={item.name}/><br/>
+<div>
+{btn}
+        <div id="snackbar">Item Added to Cart</div>
+       
+        </div>
+        <br/>
+  
+    <ul><li><h1>{item.name}</h1></li>    
+        <li><h1><i><small><strike>MRP ₹{Math.floor(parseInt(item.price)*1.1)}</strike></small> </i>₹{item.price}</h1>
+    <p>  with 10% discount </p>
+    </li>
+  
+    
     <li><p>{item.description}</p></li>
-     <li><ul className="nav justify-content-center">
-    <li className="nav-item">    <Link to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
-        <button className="btn btn-info"> Checkout</button></Link></li>
-    <li className="nav-item"><button className="btn btn-warning" onClick={this.addtocart}> Add to cart</button></li>
-    </ul></li>
     </ul>
     <div id="snackbar">Item Added to Cart</div>
         

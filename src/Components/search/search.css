@@ -1,11 +1,4 @@
-.ui.input{
-	width: 300px;
-	margin-right: 50px;
-	padding: 0px;
-}
-@media only screen and(max-width: 600px){
-	.ui.input{
-	width: 50%;
+.searchbox{
+	width: 200px;
 	min-width: 100px;
-}
 }

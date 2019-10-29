@@ -1,5 +1,5 @@
 .cl2{
-   width: auto; 
+    max-width: 6in;
 margin-top: 50px;
 
 
@@ -23,4 +23,5 @@ overflow: hidden;
 overflow: hidden;
 }
 
+	max-width: 25px;
 }

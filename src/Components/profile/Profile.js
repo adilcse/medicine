@@ -294,16 +294,20 @@ default :
         }
         let {name,address,locality,mobile,alternate,city,state,pin,landmark}=this.state;
         return (
-        	<div className="container">
-          <div>
-          <img className="im" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6lqu6IZWoJJrNGqKn6Bhaywmq_7M_6eyoJNGLg8yajoUEGqbY&s" alt="image"/>
-          </div>
-          <div className="profile-email">
-          {this.state.user.email}
-          </div>
-          <div className="row justify-content-center">
-          <div className="col">
-          Name : <input type="text"  
+        	<div className="container ">
+        	<div>
+        	<img className="im" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6lqu6IZWoJJrNGqKn6Bhaywmq_7M_6eyoJNGLg8yajoUEGqbY&s" alt="image"/>
+        	</div>
+            <div className="row profile-email" align="center">
+                <div className="col"/>
+                <div className="col-6">{this.state.user.email}</div>
+                <div className="col"/>
+                </div>
+            <div className="row profile-center-element">
+<div className="col-6">
+
+
+Name : <input type="text"  
 className="form-control" 
 id="name" 
 placeholder="Enter Name"  
@@ -311,52 +315,56 @@ value={name}
 readOnly={!this.state.edit}
 onChange={()=>this.handeladdresschange("name")}
 />
-          </div>
-          <div className="col">
-          Pin :<input type="text"  className="form-control" id="pin" placeholder="Enter Pin Code" value={pin} readOnly={!this.state.edit}  onChange={()=>this.handeladdresschange("pin")}/>
-          </div>
-          </div>
-          <div className="row justify-content-center">
-          <div className="col">
-          City : <input type="text"  className="form-control" readOnly={!this.state.edit} id="city" placeholder="Enter City" value={city}   onChange={()=>this.handeladdresschange("city")}/>
-          </div>
-          <div className="col">
-          State :<input type="text"  className="form-control" readOnly={!this.state.edit} id="state" placeholder="Enter State" value={state}   onChange={()=>this.handeladdresschange("state")}/>
-          </div>
-          </div>
-          <div className="row justify-content-center">
-          <div className="col">
-          Mob No :<input type="text" className="form-control" id="Mobileno" placeholder="Enter Mobile number" readOnly={!this.state.edit} value={mobile}   onChange={()=>this.handeladdresschange("mobile")}/>
-          </div>
-          <div className="col">
-          Locality :<input type="text"  className="form-control" id="locality" placeholder="Enter Locality" readOnly={!this.state.edit} value={locality}   onChange={()=>this.handeladdresschange("locality")}/>
-          </div>
-          </div>
-          <div className="row justify-content-center">
-          <div className="col">
-          Landmark: <input type="text" className="form-control" readOnly={!this.state.edit} id="landmark" placeholder="Enter Landmark" value={landmark}   onChange={()=>this.handeladdresschange("landmark")}/>
-          </div>
-          <div className="col">
-          Alternate no:<input type="text"  className="form-control" readOnly={!this.state.edit} id="alternate" placeholder="Alternate number" value={alternate}   onChange={()=>this.handeladdresschange("alternate")}/>
-          </div>
-          </div>
-          <div className="row justify-content-center">
-          <div>
-          Address :<textarea   className="form-control " id="address" placeholder="Enter Address" value={address} readOnly={!this.state.edit} onChange={()=>this.handeladdresschange("address")}/>
-          </div>
-          </div>
-          <div className="row justify-content-center">
-          <div>
-          <div className="" id="carderror" className={addressupdatedclass} role="alert" hidden={this.state.addressupdated}>
+
+
+Pin :<input type="text"  className="form-control" id="pin" placeholder="Enter Pin Code" value={pin} readOnly={!this.state.edit}  onChange={()=>this.handeladdresschange("pin")}/>
+
+City : <input type="text"  className="form-control" readOnly={!this.state.edit} id="city" placeholder="Enter City" value={city}   onChange={()=>this.handeladdresschange("city")}/>
+
+
+State :<input type="text"  className="form-control" readOnly={!this.state.edit} id="state" placeholder="Enter State" value={state}   onChange={()=>this.handeladdresschange("state")}/>
+
+
+
+
+
+   </div>
+   <div className="col-6">
+ 
+Mob No :<input type="text" className="form-control" id="Mobileno" placeholder="Enter Mobile number" readOnly={!this.state.edit} value={mobile}   onChange={()=>this.handeladdresschange("mobile")}/>
+
+Locality :<input type="text"  className="form-control" id="locality" placeholder="Enter Locality" readOnly={!this.state.edit} value={locality}   onChange={()=>this.handeladdresschange("locality")}/>
+
+   Landmark: <input type="text" className="form-control" readOnly={!this.state.edit} id="landmark" placeholder="Enter Landmark" value={landmark}   onChange={()=>this.handeladdresschange("landmark")}/>
+
+
+Alternate no:<input type="text"  className="form-control" readOnly={!this.state.edit} id="alternate" placeholder="Alternate number" value={alternate}   onChange={()=>this.handeladdresschange("alternate")}/>
+
+
+   </div>
+ 
+   <div className="row profile-center-element">
+   <div className="col profile-address">
+    Address :<textarea   className="form-control " id="address" placeholder="Enter Address" value={address} readOnly={!this.state.edit}
+ 
+  onChange={()=>this.handeladdresschange("address")}/>
+        </div>
+
+       </div>
+
+<div className="row " >
+<div className="col"/>
+<div className="col-6">
+<div className="" id="carderror" className={addressupdatedclass} role="alert" hidden={this.state.addressupdated}>
        {addressdata}
        </div>
-       <div className="col">
 <button  className="btn btn-primary" onClick={this.updateaddress}>{this.state.edittext}</button>
    <Link to="/"> <button className="btn btn-warning">Cancel</button></Link>
    </div>
-          </div>
-          </div>
-          </div>
+  < div className="col"/>
+   </div>
+   </div>
+            </div>
         )
     }
 }

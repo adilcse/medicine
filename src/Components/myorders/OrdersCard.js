@@ -27,10 +27,10 @@ render(){
     <div className="col-md-8">
       <div className="card-body" align="left">
       <Link to={`/Product/${source.item_id}`}>  <h4 className="card-title">{source.name}  </h4> </Link>
-      <div>
+    
         <h4> ₹ {source.price}  only   </h4> 
         Quantity :  {number} 
-        </div>
+        
        
     
    

@@ -89,7 +89,7 @@ return(
 )
 else{
   return(
-    <h1>Sorry!no more content...☹️</h1>
+    <h1>Sorry!no more content...<span role="img" aria-label="sad">☹️</span></h1>
   )
 }
   
@@ -132,9 +132,9 @@ Home=()=>{
 }
 AddItems=()=>{
   return(
-     <div className="addItemcss container">
+     <div className="addItemcss">
   <div className="row">
-    <div className="col">
+    <div className="col-md">
      
     </div>
     <div >
@@ -142,7 +142,7 @@ AddItems=()=>{
      isAdmin={this.props.isAdmin}
      />
     </div>
-    <div className="col">
+    <div className="col-md">
     
     </div>
   </div>
@@ -190,7 +190,7 @@ render(){
 
  
 return(
-  <div className="main-body">
+  <div className="main-body bk">
     <Switch>
    
           <Route path="/addItems" exact>

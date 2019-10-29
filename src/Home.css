@@ -1,7 +1,7 @@
-/*.wd{
+.wd{
 	width: 250px; 
 
-} */
+} 
 
 
 .home{
@@ -9,10 +9,14 @@
 }
 
 .bk{
-	margin: 80px;
 	height: auto;
-	min-height: 2%;
+	min-height: 100%;
 	width: 100%;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background: radial-gradient(to bottom right,#ffffff 0%, #00cc66 66%);
 
 }
 .logo{
