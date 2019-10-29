@@ -53,7 +53,7 @@ class Home extends Component{
    userRef.get()
       .then(doc => {
         if (!doc.exists) {
-          console.log('user not exist');
+        
            obj.setState({
         isAdmin:false,
         signinopen:false,

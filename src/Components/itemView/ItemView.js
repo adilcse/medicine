@@ -71,14 +71,14 @@ class ItemView extends Component{
         if(item)
         { 
           
-        let btn=<ul><li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
+        let btn=<ul><li><button className="btn btn-warning" onClick={this.addtocart}> Add to Cart</button></li>
         <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(this.state.item,item.price,"item")}>
-                <button className="btn btn-info"> checkout</button></Link></li> </ul>
+                <button className="btn btn-info"> Buy</button></Link></li> </ul>
        if(this.props.isAdmin){
            console.log(this.props)
-        btn=<ul><li><button className="btn btn-warning" onClick={this.addtocart}> add to cart</button></li>
+        btn=<ul><li><button className="btn btn-warning" onClick={this.addtocart}> Add to Cart</button></li>
         <li>    <Link className="navbar-brand" to="/Checkout"  onClick={()=>this.props.checkoutf(item,item.price,"item")}>
-                <button className="btn btn-info"> checkout</button></Link></li>
+                <button className="btn btn-info"> Buy</button></Link></li>
                 <li>  <Link to={`/EditItem/${item.item_id}`} > <button className="btn btn-info"> EDIT</button></Link></li>
                  </ul>
        }
