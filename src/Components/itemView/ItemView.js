@@ -57,6 +57,11 @@ class ItemView extends Component{
         var x = document.getElementById("snackbar");
         x.className = "show";
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        if(!this.props.user){
+                x.innerHTML="Please Login First";
+                return;
+
+        }
         this.props.addtocart(this.state.item[0]);
     }
 
