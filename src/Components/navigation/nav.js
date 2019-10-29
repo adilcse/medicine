@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Icon} from 'semantic-ui-react';
 import Searchcomponent from '../search/Search';
-
+import './nav.css'
 import Popup from "reactjs-popup";
 import Login from '../login/Login';
 import Register from '../register/Register';
@@ -62,7 +62,7 @@ class Nav extends Component{
 		return(
 		<div className="navigation" align="center">
 		<nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" align="center">
-  <Link className="navbar-brand" to="/"> <img className="logo" alt="logo" src="https://firebasestorage.googleapis.com/v0/b/med-life.appspot.com/o/items%2Fimages%2Flogo%20copy.jpg?alt=media&token=0eb3cd28-9eae-4345-93c1-18bdc6faab02"  /> Revive </Link>
+  <Link className="navbar-brand" to="/"><div className="app-logo-text"> <img className="logo" alt="logo" src="https://firebasestorage.googleapis.com/v0/b/med-life.appspot.com/o/items%2Fimages%2Flogo%20copy.jpg?alt=media&token=0eb3cd28-9eae-4345-93c1-18bdc6faab02"  /> ReVive </div></Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>

@@ -32,6 +32,57 @@ class Checkout extends Component{
            
           }
         }
+        let obj=this;
+        firebase.auth().onAuthStateChanged(function(user) {
+          console.log("auth chacked",user);
+          if (user) {
+            const uid=user.uid;
+            let userRef = db.collection('LastUser').doc(uid);
+       userRef.get()
+          .then(doc => {
+            if(!obj.props.checkout){
+              return;
+            }
+            if (doc.exists) {
+              let userdetails = doc.data();
+              userdetails.uid=doc.id;
+              obj.setState({
+                orderplaced :false,
+                addressupdated : true,
+                shipping :true,
+                payment : false,
+                errorcard:true,
+                Address : userdetails.Address,
+                user : userdetails,
+                loading : false,
+                login : true,
+                
+            
+                 price : parseInt(obj.props.checkout.price)+40
+               })
+              if(userdetails.Address){
+                user=userdetails;
+                obj.setState({
+                  name : user.Address.name,
+                  pin :user.Address.pin,
+                  mobile :user.Address.mobile,
+                    locality : user.Address.locality,
+                    address :user.Address.address,
+                   city : user.Address.city,
+                   state :user.Address.state,
+                   landmark :user.Address.landmark,
+                    alternate : user.Address.alternate,
+                })
+              }
+
+            
+            
+          }
+        })
+          } else {
+            // No user is signed in.
+          }
+        });
         this.verifyaddress = this.verifyaddress.bind(this);
       
     }
@@ -284,6 +335,7 @@ default :
     }
     }
    componentDidMount(){
+    
      try{
        if(!this.props.user){
         this.setState({
