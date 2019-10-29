@@ -99,9 +99,9 @@ Home=()=>{
     if(this.state.loaded<this.state.loadmax){
     this.fetchitems();
    
-    return <div className="load" status="load">
+    return (<div className="load" status="load">
     <span className="spinner-grow spinner-grow-sm" role="status"></span>
-    <h2>Loading</h2></div>
+    <h2>Loading</h2></div>)
   }
   
   if(this.state.itemfetched){

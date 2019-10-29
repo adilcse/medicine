@@ -1,10 +1,10 @@
-import _ from 'lodash';
 
 import React, { Component } from 'react';
 import {Search,Grid} from 'semantic-ui-react';
 import './search.css'
 import {firebase,db} from '../../firebaseconnect';
-
+  
+import _ from 'lodash';
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
