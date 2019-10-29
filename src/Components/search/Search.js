@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {Search,Grid} from 'semantic-ui-react';
 import './search.css'
 import {firebase,db} from '../../firebaseconnect';
-import  {  Redirect ,Route} from "react-router-dom";
+
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
@@ -79,7 +79,7 @@ this.props.searchchanged(result.item_id)
     if(redirect){
 
    
-      re= <Redirect to={`/Product/${redirecturl}`}/>
+  //    re= <Redirect to={`/Product/${redirecturl}`}/>
    
       window.location = window.location.origin.toString()+`/Product/${redirecturl}`;
      

@@ -58,21 +58,21 @@ class Orders extends Component{
       
         if(this.state.orders.length=== 0 ){
             return(
-                <h1>Nothing Ordered Yet...</h1>
-            )
+                <div className="not-admin">Nothing Ordered Yet...</div>)
         }
         {console.log(this.state.orders)}
         return (
-            <div>
+            <div className="orderbody">
 
-            <h2>Orders</h2>
+           
             <div className="container-fluid">
+            <h2>Orders</h2>
             <div className="row">
                  <div className="col">
     
                   </div>
                  <div className="col-8">
-                    
+                   
             {this.state.orders.map((elements,i)=>{
             let currentDate= elements.data.time.toDate();
             var date = currentDate.getDate();
@@ -81,6 +81,7 @@ class Orders extends Component{
 
             var dateString = date + "-" +(month + 1) + "-" + year;
             return <div className="card text-center order-card">
+                 
           <div className="card-header">
               <div className="row">
             <div className="col-6">Order Id : {elements.id}</div>

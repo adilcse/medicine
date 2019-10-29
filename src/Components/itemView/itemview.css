@@ -1,7 +1,8 @@
 .item{
 	/*transform: translateY(30%);*/
-	max-width: 70%;
-	padding: 10px 0px 10px 0px;
+	transform: translateY(10%);
+	max-width: 100%;
+	margin-top: 5px;
 	background-color: white;
 	border: 1px solid green;
 	border-radius: 0px 30px;
@@ -36,7 +37,18 @@ ul li h1{
 	border-radius: 20px;
 	box-shadow: 3px 3px 10px black;
 }
+.btn-info{
+	padding: 5px;
+	margin: 5px;
+	
+}
 .btn-info:hover{
+	color: white;
+	text-shadow: 4px 4px 3px black;
+	font-weight: bold;
+	transition: .5s;
+}
+.btn-primary:hover{
 	color: white;
 	text-shadow: 4px 4px 3px black;
 	font-weight: bold;
@@ -75,7 +87,21 @@ ul li h1{
 	bottom: 30px;
 	font-size: 17px;
   }
-  
+  .not-admin{
+	transform: translateY(40%);
+	max-width: 70%;
+	height: 10rem;
+	line-break: loose;
+	text-align: center;
+	align-items: center;
+	padding-top: 30px;
+	margin-top: 200px;
+	background-color: white;
+	border: 1px solid green;
+	border-radius: 0px 30px;
+	box-shadow: 7px 7px 20px black;
+	font-size: 4rem;
+  }
   #snackbar.show {
 	visibility: visible;
 	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -104,15 +130,15 @@ ul li h1{
 	@media only screen and (max-width: 1000px){
 	.item{
 	/*transform: translateY(30%);*/
-	max-width: 70%;
-	padding: 10px 0px 10px 0px;
+	max-width: 100%;
+	padding: 0px 0px 10px 0px;
 	background-color: white;
 	border: 1px solid green;
 	border-radius: 0px 30px;
 	box-shadow: 7px 7px 20px black;
 }
 .item img{
-	height: 70%;
+	height: initial;
 	width: 70%;
 	padding: 10px;
 	margin: 30px 10px 10px 10px;
@@ -124,15 +150,16 @@ ul li h1{
 }
 	@media only screen and (max-width: 800px){
 	.item{
-	max-width: 70%;
-	padding: 10px 0px 10px 0px;
+		height: initial;
+	max-width: 100%;
+	padding: 0px 0px 10px 0px;
 	background-color: white;
 	border: 1px solid green;
 	border-radius: 0px 30px;
 	box-shadow: 7px 7px 20px black;
 }
 .item img{
-	height: 50%;
+	height: initial;
 	width: 50%;
 	padding: 10px;
 	margin: 30px 10px 10px 10px;

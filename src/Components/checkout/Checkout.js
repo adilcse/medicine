@@ -335,17 +335,28 @@ default :
   if(obj.props.checkout.via === "cart"){
     obj.props.cartitems.map((data,i)=>{
       cartRef.collection("Cart").doc(data.item.item_id ).delete().then(()=>{
-        console.log("cart deleted",data.item);
+      
       })
     })
     
 
   }else if(obj.props.checkout.via === "item")
-  console.log("Order Placed by item");
+             { console.log("Order Placed by item");}
   obj.setState({
     orderplaced :true
 
   })
+  console.log(obj.props.checkout);
+  obj.props.checkout.items.map((element,i) => {
+    console.log("checked",element.item.item_id)
+    db.collection("Items").doc(element.item.item_id).set({
+        item_sold:  firebase.firestore.FieldValue.increment(parseInt(element.numbers)),
+      
+    }, { merge: true }).then(()=>{
+      console.log("incremented",element);
+    })
+    return true;
+  });
 })
 .catch(function(error) {
   console.error("Error writing document: ", error);
@@ -385,9 +396,9 @@ default :
             return(<h1>Loading</h1>)
         }
         if(!this.state.login){  
-          return(<h2>Please login first</h2>)
+          return( <div className="not-admin">Please login first</div>)
       }
-        console.log("called",this.state,{addressdata})
+        
       }catch(e){
         return(<h2>Something went wrong..</h2>)
       }
