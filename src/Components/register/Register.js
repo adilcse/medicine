@@ -181,7 +181,7 @@ return (
   <span className="border"></span>
 </label>
  <label for="inp" className="inp">
-  <input type="text" id="password" placeholder="&nbsp;"/>
+  <input type="password" id="password" placeholder="&nbsp;"/>
   <span className="label">Password</span>
   <span className="border"></span>
 </label>
