@@ -7,6 +7,8 @@ import Body from './Body';
 import Nav from './Components/navigation/nav';
 import {db,firebase} from './firebaseconnect';
 import {BrowserRouter as Router} from 'react-router-dom';
+import FooterPage from './Footer';
+
 let cartRef;
  
 
@@ -252,6 +254,7 @@ return(
      checkout = {this.state.checkout}
      checkoutf={this.checkout}
     />
+    <FooterPage/>
    
   </div>
   </Router>

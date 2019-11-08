@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/med-life.appspot.com/o/items%2Fimages%2Flogo%20copy.jpg?alt=media&token=8ece26da-14e4-4c1f-83a2-e634d252676e"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--
@@ -25,7 +26,6 @@
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
-
       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
@@ -44,10 +44,8 @@
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
-
       You can add webfonts, meta tags, or analytics to this file.
       The build step will place the bundled scripts into the <body> tag.
-
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
@@ -59,9 +57,36 @@
 
 
 
-
-    <!-- Footer -->
-<!-- Footer -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+  *{
+    box-sizing: border-box;
+  }
+  body{
+    background: linear-gradient(to bottom,#ffffff 0%, #00cc66 66%);
+    background-repeat: no-repeat;
+   
+    width: 100%;
+    height: unset;
+    min-height: 800px;
+  }
+  @media only screen and (max-width: 1000px)
+{
+  body{
+    padding-top: 65px;
+  }
+}
+@media only screen and (max-width: 800px)
+{
+  body{
+    padding-top: 180px;
+  }
+}
+</style>
+   
   </body>
+   <!-- Footer -->
+
+<!-- Footer -->
   
 </html>
