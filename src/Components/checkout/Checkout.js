@@ -373,7 +373,8 @@ default :
     PlaceOrder=(order)=>{
       let obj= this;
      let cartRef=db.collection("LastUser").doc(this.state.user.uid);
- cartRef.collection("Orders").doc().set({
+ db.collection("Orders").doc().set({
+   uid : this.state.user.uid,
   items :obj.props.checkout.items,
   price : obj.state.price,
   Address:obj.state.shipAddress,

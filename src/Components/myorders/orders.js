@@ -14,7 +14,8 @@ class Orders extends Component{
             let obj = this;
             if(this.props.user){
                 let userRef = db.collection('LastUser').doc(this.props.user.uid);
-                userRef.collection("Orders").orderBy("time", "desc").onSnapshot(function(querySnapshot) {
+             
+                db.collection("Orders").where("uid","==",this.props.user.uid).orderBy("time", "desc").onSnapshot(function(querySnapshot) {
                     var ordersdata = [];
                     querySnapshot.forEach(function(doc) {
                         let ord = {
@@ -37,7 +38,7 @@ class Orders extends Component{
         let obj = this;
             if(this.props.user){
                 let userRef = db.collection('LastUser').doc(this.props.user.uid);
-                userRef.collection("Orders").orderBy("time", "desc").onSnapshot(function(querySnapshot) {
+                db.collection("Orders").doc().where("uid","==", this.props.user.uid).orderBy("time", "desc").onSnapshot(function(querySnapshot) {
                     var ordersdata = [];
                     querySnapshot.forEach(function(doc) {
                         let ord = {

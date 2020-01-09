@@ -1,13 +1,14 @@
 import * as firebase from "firebase";
 import "firebase/auth";
 var firebaseConfig = {
-    apiKey: "AIzaSyAuCg2E3sWkzwwmAT-3W7iu5RNN-C0r87U",
-    authDomain: "med-life.firebaseapp.com",
-    databaseURL: "https://med-life.firebaseio.com",
-    projectId: "med-life",
-    storageBucket: "gs://med-life.appspot.com/",
-    messagingSenderId: "799069840222",
-    appId: "1:799069840222:web:0957d160b3d30bb8"
+  apiKey: "AIzaSyDTZsKTmbcRjGwNF652wIdTv_rkiWkQZQQ",
+  authDomain: "revive-medicine.firebaseapp.com",
+  databaseURL: "https://revive-medicine.firebaseio.com",
+  projectId: "revive-medicine",
+  storageBucket: "revive-medicine.appspot.com",
+  messagingSenderId: "605018565755",
+  appId: "1:605018565755:web:326651baa13394719bc6de",
+  measurementId: "G-GK6EMMGWE7"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
