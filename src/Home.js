@@ -7,6 +7,8 @@ import Body from './Body';
 import Nav from './Components/navigation/nav';
 import {db,firebase} from './firebaseconnect';
 import {BrowserRouter as Router} from 'react-router-dom';
+import FooterPage from './Footer';
+
 let cartRef;
  
 
@@ -53,7 +55,7 @@ class Home extends Component{
    userRef.get()
       .then(doc => {
         if (!doc.exists) {
-          console.log('user not exist');
+        
            obj.setState({
         isAdmin:false,
         signinopen:false,
@@ -79,7 +81,7 @@ class Home extends Component{
         return doc.data();
       }).then(user=>{
        userRef.collection("Cart").orderBy("time", "desc").onSnapshot(function(querySnapshot) {
-        var items = new Array();
+        var items = [];
         querySnapshot.forEach(function(doc) {
             items.push(doc.data());
         });
@@ -252,6 +254,7 @@ return(
      checkout = {this.state.checkout}
      checkoutf={this.checkout}
     />
+    <FooterPage/>
    
   </div>
   </Router>

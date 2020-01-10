@@ -6,7 +6,6 @@
 	text-align: center;
 	font-size: 16px;
 	margin: 4px 2px;
-
 	transition: 0.3s;
 	position: relative;
 	top :10px
@@ -32,7 +31,7 @@
 .home-container{
 	display:grid;
 	grid-template-columns: 1fr 1fr;
-	overflow: hidden;
+	/* overflow: ; */
 
 }
 
@@ -58,9 +57,12 @@
 }
 .main-body{
 	margin-top: 50px;
+	min-height: 50rem;
 	background: linear-gradient(to bottom,#ffffff 0%, #00cc66 66%);
 	/* background: linear-gradient(to bottom right, #66ffff 0%, #000000 100%); */
 }
 .body-home{
 	margin-top: 100px;
 }
+
+/* Final Commit Added*/

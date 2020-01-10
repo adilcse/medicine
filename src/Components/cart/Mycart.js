@@ -19,7 +19,6 @@ constructor(props){
     }
     render(){
        
-        console.log("cart changed")
        if(this.state.checkout){
            return(
                <Redirect to= "/Checkout"/>
@@ -46,7 +45,7 @@ constructor(props){
               <div className="col">
                 
               </div>
-              <div className="col-6 cl2">
+              <div className="col-8 cl2">
             
         	{this.props.cartitems.map((data,i)=>{
         	 return	<CartCard key={i} 

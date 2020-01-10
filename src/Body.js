@@ -89,7 +89,7 @@ return(
 )
 else{
   return(
-    <h1>Sorry!no more content...☹️</h1>
+    <h1>Sorry!no more content...<span role="img" aria-label="sad">☹️</span></h1>
   )
 }
   
@@ -99,9 +99,9 @@ Home=()=>{
     if(this.state.loaded<this.state.loadmax){
     this.fetchitems();
    
-    return <div className="load" status="load">
+    return (<div className="load" status="load">
     <span className="spinner-grow spinner-grow-sm" role="status"></span>
-    <h2>Loading</h2></div>
+    <h2>Loading</h2></div>)
   }
   
   if(this.state.itemfetched){

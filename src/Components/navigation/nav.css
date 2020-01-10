@@ -25,12 +25,16 @@ nav ul li{
 @media only screen and (max-width: 1000px)
 {
 	.extra{
+
 		
 	}
 	ul li{
 		margin: 4px 1px 4px 1px;
 	}
 }
-.nv{
-	max-height: 200px;
+
+.app-logo-text{
+	font-family: 'Times new roman', 'Arial Narrow', Arial, sans-serif;
+	
+	font-size: 3rem;
 }
